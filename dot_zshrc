@@ -1,0 +1,66 @@
+source /_/zsh_plugins/zsh-snap/znap.zsh
+
+znap source zsh-users/zsh-syntax-highlighting
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-history-substring-search
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTDUP=erase
+setopt notify
+setopt share_history
+setopt inc_append_history
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_find_no_dups
+unsetopt autocd beep extendedglob nomatch
+
+# Add my fun ctrl +a, etc. (emacs bindings)
+bindkey -e
+
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/mask/.zshrc'
+
+# make completion non case specific
+autoload -U compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+source ~/.aliases.sh
+
+# pnpm
+export PNPM_HOME="/home/mask/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+export PATH="$PATH:/home/mask/.local/bin"
+# pnpm end
+
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+
+# arrowkey + direction
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# HUI specific fixes
+while [[ $(pwd) = /_/**/hammer-ui/* ]]; do
+    echo automatically moving from $(pwd) to $(dirname $(pwd))
+    cd ..
+done
+
+# bun completions
+[ -s "/home/mask/.bun/_bun" ] && source "/home/mask/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+#
