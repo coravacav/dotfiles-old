@@ -18,9 +18,9 @@ alias gm = g merge
 alias gp = g pull
 alias gc = g checkout
 alias ga = g add
-alias gac = ga . and git commit
+alias gac = ga .; git commit
 alias gcm = g commit -m
-alias gacm = ga . and gcm
+alias gacm = ga .; gcm
 alias grh = g reset --hard
 def gb [] {
     git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(align:45)%(color:yellow)%(refname:short)%(color:reset)%(end) %(color:red)%(objectname:short)%(color:reset) %(contents:subject)'
@@ -29,7 +29,7 @@ def gb [] {
 alias c = code
 alias cr = code -r
 
-def zc [dir: string] { z $dir and c . }
-def zcr [dir: string] { z $dir and cr . }
-def gacmp [message: string] { ga . and gcm $message and g push }
-def gcmp [message: string] { gcm $message and g push }
+def zc [dir: string] { z $dir; c . }
+def zcr [dir: string] { z $dir; cr . }
+def gacmp [message: string] { ga .; gcm $message; g push }
+def gcmp [message: string] { gcm $message; g push }
