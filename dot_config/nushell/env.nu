@@ -63,6 +63,4 @@ let-env NU_PLUGIN_DIRS = [
 
 # My additions
 zoxide init nushell | save -f ~/.zoxide.nu
-
-mkdir ~/.cache/starship
-starship init nu | save ~/.cache/starship/init.nu
+starship init nu | save -f ~/.cache/starship/init.nu
