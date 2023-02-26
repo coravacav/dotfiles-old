@@ -18,10 +18,10 @@ alias gm = g merge
 alias gp = g pull
 alias gc = g checkout
 alias ga = g add
-alias gac = ga .; git commit
 alias gcm = g commit -m
-alias gacm = ga .; gcm
 alias grh = g reset --hard
+def gac [...rest: any] { ga .; git commit $rest }
+def gacm [...rest: any] { ga .; gcm $rest }
 def gb [] {
     git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(align:45)%(color:yellow)%(refname:short)%(color:reset)%(end) %(color:red)%(objectname:short)%(color:reset) %(contents:subject)'
 }
