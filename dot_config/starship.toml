@@ -2,6 +2,7 @@
 
 format = """
 $hostname\
+($shell)\
 $directory\
 $git_branch\
 $git_state\
@@ -15,7 +16,13 @@ right_format = """$time"""
 
 [hostname]
 ssh_only = false
-format = '[$hostname](dimmed italic purple) '
+style = 'dimmed italic purple'
+format = '[$hostname]($style) '
+
+[shell]
+format = '[\($indicator\)]($style) '
+style = 'dimmed purple'
+disabled = false
 
 [fill]
 symbol = ' '
@@ -52,6 +59,6 @@ style = "yellow"
 show_milliseconds = true
 
 [time]
-format='[$time]($style)'
+format = '[$time]($style)'
 disabled = false
 style = 'dimmed white'
