@@ -11,7 +11,7 @@ alias pe = p exec
 alias px = p dlx
 alias pc = p pc
 alias dev = p dev
-def pf [filter: string, ...rest: string] { p --filter '*'($filter)'*' $rest }
+def pf [filter: string, ...rest: string] { pnpm --filter $"*($filter)*" $rest }
 
 alias g = git
 alias gm = g merge
