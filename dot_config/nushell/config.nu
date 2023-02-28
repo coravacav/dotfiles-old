@@ -566,3 +566,17 @@ let-env config = {
 source ~/.zoxide.nu
 source ~/.cache/starship/init.nu
 source ~/.aliases.nu
+
+let-env PNPM_HOME = $"/home/mask/.local/share/pnpm"
+let-env PATH = ($env.PATH | append $env.PNPM_HOME)
+let-env PATH = ($env.PATH | append /home/mask/.local/bin)
+let-env BUN_INSTALL = $"($env.HOME)/.bun"
+let-env PATH = ($env.PATH | append $"($env.BUN_INSTALL)/bin")
+
+while (pwd | parse -r '/_/.+?/hammer-ui/[^$]' | length | into bool) {
+  echo $"automatically moving from (pwd) to (pwd | path parse | get parent)"
+  cd ..
+}
+
+# https://github.com/nodesource/distributions/blob/master/README.md#uninstall-nodejs-ubuntu--debian-packages
+# when fnm likes nu.
