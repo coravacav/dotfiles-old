@@ -31,7 +31,6 @@ source ~/.aliases.sh
 # pnpm
 export PNPM_HOME="/home/mask/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-export PATH="$PATH:/home/mask/.local/bin"
 # pnpm end
 
 eval "$(zoxide init zsh)"

@@ -59,6 +59,7 @@ let-env NU_PLUGIN_DIRS = [
 ]
 
 
+
 let-env PATH = ($env.PATH | append ~/.cargo/bin)
 let-env PNPM_HOME = $"~/.local/share/pnpm"
 let-env PATH = ($env.PATH | append $env.PNPM_HOME)
@@ -66,9 +67,8 @@ let-env PATH = ($env.PATH | append ~/.local/bin)
 let-env BUN_INSTALL = $"($env.HOME)/.bun"
 let-env PATH = ($env.PATH | append $"($env.BUN_INSTALL)/bin")
 let-env PATH = ($env.PATH | append /opt/homebrew/bin/)
-if ($nu.os-info | get name | $in == 'macos') {
-    let-env PATH = ($env.PATH | append '/Applications/Visual Studio Code.app/Contents/Resources/app/bin')
-}
+
+source ~/.localenv.nu
 
 # My additions
 zoxide init nushell | save -f ~/.zoxide.nu
