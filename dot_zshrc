@@ -32,9 +32,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 source ~/.aliases.sh
 
 # pnpm
@@ -62,9 +59,3 @@ done
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-nu
-
-# fnm
-export PATH="/home/mask/.local/share/fnm:$PATH"
-eval "`fnm env`"
