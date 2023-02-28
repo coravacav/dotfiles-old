@@ -58,8 +58,13 @@ let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
-# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+
+let-env PATH = ($env.PATH | append /home/mask/.cargo/bin)
+let-env PNPM_HOME = $"/home/mask/.local/share/pnpm"
+let-env PATH = ($env.PATH | append $env.PNPM_HOME)
+let-env PATH = ($env.PATH | append /home/mask/.local/bin)
+let-env BUN_INSTALL = $"($env.HOME)/.bun"
+let-env PATH = ($env.PATH | append $"($env.BUN_INSTALL)/bin")
 
 # My additions
 zoxide init nushell | save -f ~/.zoxide.nu
