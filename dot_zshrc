@@ -52,3 +52,9 @@ done
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Add node
+eval "$(fnm env --use-on-cd)"
+
+# bun completions
+[ -s "/Users/st/.bun/_bun" ] && source "/Users/st/.bun/_bun"
