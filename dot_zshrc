@@ -29,7 +29,7 @@ compinit
 source ~/.aliases.sh
 
 # pnpm
-export PNPM_HOME="/home/mask/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
@@ -58,3 +58,6 @@ eval "$(fnm env --use-on-cd)"
 
 # bun completions
 [ -s "/Users/st/.bun/_bun" ] && source "/Users/st/.bun/_bun"
+
+# jira-cli
+export JIRA_API_TOKEN='ATATT3xFfGF0ohAmtaAjwNRFYSJS-FoAI3LX5Ep0VOGiyUzG2DuHODzXOThrGOY7ZrOAFCtKzBAEJA2LkZWmhZYBLvGGWz6pduVYWN8VF_g5GCv-A1wARi26GVoAuA-KY2OjVSjciGicYFswrRYTSqO33nvvzh_mDfuTorZHiyvP1q1l0IUFZNQ=99709D6C'

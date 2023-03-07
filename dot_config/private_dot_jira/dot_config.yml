@@ -1,0 +1,687 @@
+board:
+    id: 104
+    name: 'DELIVERY: Hammer UX'
+    type: kanban
+epic:
+    name: customfield_10009
+    link: customfield_10008
+installation: Cloud
+issue:
+    fields:
+        custom:
+            - name: Spec ready
+              key: customfield_11841
+              schema:
+                datatype: number
+            - name: Key customers
+              key: customfield_11840
+              schema:
+                datatype: array
+                items: option
+            - name: Effort
+              key: customfield_11832
+              schema:
+                datatype: number
+            - name: Issue color
+              key: customfield_11711
+              schema:
+                datatype: string
+            - name: Product area
+              key: customfield_11831
+              schema:
+                datatype: option
+            - name: Story point estimate
+              key: customfield_11710
+              schema:
+                datatype: number
+            - name: Goal impact
+              key: customfield_11834
+              schema:
+                datatype: number
+            - name: Help Scout Conversation Count
+              key: customfield_11713
+              schema:
+                datatype: number
+            - name: Idea archived by
+              key: customfield_11833
+              schema:
+                datatype: array
+                items: user
+            - name: Idea archived
+              key: customfield_11836
+              schema:
+                datatype: option
+            - name: Target end
+              key: customfield_11715
+              schema:
+                datatype: date
+            - name: Idea archived on
+              key: customfield_11835
+              schema:
+                datatype: datetime
+            - name: Target start
+              key: customfield_11714
+              schema:
+                datatype: date
+            - name: Teams
+              key: customfield_11838
+              schema:
+                datatype: array
+                items: option
+            - name: Quarters
+              key: customfield_11837
+              schema:
+                datatype: option
+            - name: Public description
+              key: customfield_11839
+              schema:
+                datatype: string
+            - name: Story Points
+              key: customfield_11718
+              schema:
+                datatype: number
+            - name: Short description
+              key: customfield_11830
+              schema:
+                datatype: string
+            - name: Capitalizable
+              key: customfield_11821
+              schema:
+                datatype: array
+                items: option
+            - name: Request participants
+              key: customfield_11702
+              schema:
+                datatype: array
+                items: user
+            - name: Request Type
+              key: customfield_11701
+              schema:
+                datatype: sd-customerrequesttype
+            - name: Satisfaction date
+              key: customfield_11704
+              schema:
+                datatype: datetime
+            - name: Security Approval
+              key: customfield_11825
+              schema:
+                datatype: array
+                items: user
+            - name: Manager Approval
+              key: customfield_11824
+              schema:
+                datatype: array
+                items: user
+            - name: Satisfaction
+              key: customfield_11703
+              schema:
+                datatype: sd-feedback
+            - name: Bucket
+              key: customfield_11827
+              schema:
+                datatype: option
+            - name: Time to resolution
+              key: customfield_11706
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: Monthly/Annual Cost
+              key: customfield_11826
+              schema:
+                datatype: string
+            - name: Request language
+              key: customfield_11708
+              schema:
+                datatype: sd-request-lang
+            - name: Roadmap
+              key: customfield_11829
+              schema:
+                datatype: option
+            - name: Goal
+              key: customfield_11828
+              schema:
+                datatype: array
+                items: option
+            - name: Time to first response
+              key: customfield_11707
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: Start date
+              key: customfield_11709
+              schema:
+                datatype: date
+            - name: Requirements
+              key: customfield_11810
+              schema:
+                datatype: string
+            - name: Impact Start Time
+              key: customfield_11812
+              schema:
+                datatype: datetime
+            - name: Impact End Time
+              key: customfield_11811
+              schema:
+                datatype: datetime
+            - name: Report Name
+              key: customfield_11814
+              schema:
+                datatype: string
+            - name: Owner
+              key: customfield_11813
+              schema:
+                datatype: array
+                items: user
+            - name: Incident Priority
+              key: customfield_11816
+              schema:
+                datatype: option
+            - name: Priority Level
+              key: customfield_11815
+              schema:
+                datatype: string
+            - name: Major incident
+              key: customfield_11818
+              schema:
+                datatype: string
+            - name: Team
+              key: customfield_11817
+              schema:
+                datatype: array
+                items: option
+            - name: Why
+              key: customfield_11819
+              schema:
+                datatype: string
+            - name: Capitalizable
+              key: customfield_11803
+              schema:
+                datatype: array
+                items: option
+            - name: Supporting Analytics
+              key: customfield_11805
+              schema:
+                datatype: string
+            - name: Hypothesis
+              key: customfield_11804
+              schema:
+                datatype: string
+            - name: UX Design
+              key: customfield_11807
+              schema:
+                datatype: string
+            - name: Discovery Q & A
+              key: customfield_11809
+              schema:
+                datatype: string
+            - name: Technical Design/Architecture
+              key: customfield_11808
+              schema:
+                datatype: string
+            - name: Development
+              key: customfield_11000
+              schema:
+                datatype: any
+            - name: Epic Status
+              key: customfield_10010
+              schema:
+                datatype: option
+            - name: Epic Color
+              key: customfield_10011
+              schema:
+                datatype: string
+            - name: Team
+              key: customfield_11100
+              schema:
+                datatype: any
+            - name: Sprint
+              key: customfield_10007
+              schema:
+                datatype: array
+                items: json
+            - name: Approvals
+              key: customfield_10800
+              schema:
+                datatype: sd-approvals
+            - name: Flagged
+              key: customfield_10002
+              schema:
+                datatype: array
+                items: option
+            - name: Developers
+              key: customfield_11200
+              schema:
+                datatype: array
+                items: user
+            - name: Parent Link
+              key: customfield_10900
+              schema:
+                datatype: any
+            - name: Dev Team
+              key: customfield_11791
+              schema:
+                datatype: array
+                items: option
+            - name: Capitalizable
+              key: customfield_11790
+              schema:
+                datatype: array
+                items: option
+            - name: Feature Branch
+              key: customfield_11793
+              schema:
+                datatype: string
+            - name: Compass
+              key: customfield_11792
+              schema:
+                datatype: string
+            - name: Rank
+              key: customfield_10100
+              schema:
+                datatype: any
+            - name: Category
+              key: customfield_11794
+              schema:
+                datatype: option
+            - name: Locked forms
+              key: customfield_11788
+              schema:
+                datatype: number
+            - name: Submitted forms
+              key: customfield_11787
+              schema:
+                datatype: number
+            - name: Total forms
+              key: customfield_11789
+              schema:
+                datatype: number
+            - name: Issue Weight
+              key: customfield_11780
+              schema:
+                datatype: number
+            - name: House ID?
+              key: customfield_11782
+              schema:
+                datatype: string
+            - name: Work category
+              key: customfield_11781
+              schema:
+                datatype: string
+            - name: Checklist Text (view-only)
+              key: customfield_11784
+              schema:
+                datatype: string
+            - name: House Contact Information?
+              key: customfield_11783
+              schema:
+                datatype: string
+            - name: Open forms
+              key: customfield_11786
+              schema:
+                datatype: number
+            - name: Responders
+              key: customfield_11777
+              schema:
+                datatype: array
+                items: string
+            - name: Classic, partners or www?
+              key: customfield_11779
+              schema:
+                datatype: array
+                items: option
+            - name: Approver groups
+              key: customfield_11778
+              schema:
+                datatype: array
+                items: group
+            - name: Release Level
+              key: customfield_11772
+              schema:
+                datatype: option
+            - name: PrevState
+              key: customfield_11775
+              schema:
+                datatype: string
+            - name: Artist
+              key: customfield_11774
+              schema:
+                datatype: user
+            - name: Checklist Content YAML
+              key: customfield_11766
+              schema:
+                datatype: string
+            - name: Checklist Completed
+              key: customfield_11765
+              schema:
+                datatype: string
+            - name: Was a deploy rolled back?
+              key: customfield_11768
+              schema:
+                datatype: array
+                items: option
+            - name: Checklist Text
+              key: customfield_11767
+              schema:
+                datatype: string
+            - name: ER Triggered Alert or Manually Raised
+              key: customfield_11769
+              schema:
+                datatype: array
+                items: option
+            - name: What was the resolution?
+              key: customfield_11760
+              schema:
+                datatype: string
+            - name: Checklist Progress
+              key: customfield_11762
+              schema:
+                datatype: string
+            - name: Should we expect ongoing issues?
+              key: customfield_11761
+              schema:
+                datatype: option
+            - name: Checklist Template
+              key: customfield_11764
+              schema:
+                datatype: option2
+            - name: Checklist Progress %
+              key: customfield_11763
+              schema:
+                datatype: number
+            - name: Organizations
+              key: customfield_11400
+              schema:
+                datatype: array
+                items: sd-customerorganization
+            - name: 3rd Party Systems
+              key: customfield_11755
+              schema:
+                datatype: array
+                items: option
+            - name: Required Description
+              key: customfield_11876
+              schema:
+                datatype: string
+            - name: Effected Users
+              key: customfield_11754
+              schema:
+                datatype: array
+                items: option
+            - name: Requested Due Date
+              key: customfield_11875
+              schema:
+                datatype: date
+            - name: What was the issue?
+              key: customfield_11757
+              schema:
+                datatype: string
+            - name: Browser
+              key: customfield_11756
+              schema:
+                datatype: array
+                items: option
+            - name: What was the effect on our customers?
+              key: customfield_11759
+              schema:
+                datatype: string
+            - name: Who was impacted?
+              key: customfield_11758
+              schema:
+                datatype: string
+            - name: BUG Disc. Type
+              key: customfield_11870
+              schema:
+                datatype: option
+            - name: Category
+              key: customfield_11751
+              schema:
+                datatype: option
+            - name: Reproduce Steps
+              key: customfield_11750
+              schema:
+                datatype: string
+            - name: Affected Platform Areas
+              key: customfield_11753
+              schema:
+                datatype: array
+                items: option
+            - name: Market Place or Shared Service
+              key: customfield_11874
+              schema:
+                datatype: option-with-child
+            - name: Category of Event
+              key: customfield_11873
+              schema:
+                datatype: option
+            - name: What URL/Pages are you on?
+              key: customfield_11752
+              schema:
+                datatype: string
+            - name: Change completion date
+              key: customfield_11744
+              schema:
+                datatype: datetime
+            - name: Theme
+              key: customfield_11865
+              schema:
+                datatype: option
+            - name: Change start date
+              key: customfield_11743
+              schema:
+                datatype: datetime
+            - name: Product/Platform
+              key: customfield_11867
+              schema:
+                datatype: option
+            - name: Root cause
+              key: customfield_11746
+              schema:
+                datatype: string
+            - name: Investigation reason
+              key: customfield_11745
+              schema:
+                datatype: option
+            - name: Number of people Affected
+              key: customfield_11866
+              schema:
+                datatype: number
+            - name: Interested Parties
+              key: customfield_11869
+              schema:
+                datatype: array
+                items: user
+            - name: Time to close after resolution
+              key: customfield_11748
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: ADO Area Path (GAP)
+              key: customfield_11868
+              schema:
+                datatype: option
+            - name: Workaround
+              key: customfield_11747
+              schema:
+                datatype: string
+            - name: Time to review normal change
+              key: customfield_11749
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: Associated Theme
+              key: customfield_11861
+              schema:
+                datatype: option
+            - name: Test plan
+              key: customfield_11740
+              schema:
+                datatype: string
+            - name: Planned end date
+              key: customfield_11742
+              schema:
+                datatype: datetime
+            - name: Planned start date
+              key: customfield_11741
+              schema:
+                datatype: datetime
+            - name: Acceptance Criteria
+              key: customfield_11854
+              schema:
+                datatype: string
+            - name: Severity
+              key: customfield_11733
+              schema:
+                datatype: option
+            - name: ADO Area Path
+              key: customfield_11853
+              schema:
+                datatype: option
+            - name: Affected services
+              key: customfield_11732
+              schema:
+                datatype: array
+                items: service-entity-field
+            - name: Change type
+              key: customfield_11735
+              schema:
+                datatype: option
+            - name: HYPOTHESES
+              key: customfield_11856
+              schema:
+                datatype: string
+            - name: Source
+              key: customfield_11734
+              schema:
+                datatype: option
+            - name: WHY
+              key: customfield_11855
+              schema:
+                datatype: string
+            - name: Change reason
+              key: customfield_11737
+              schema:
+                datatype: option
+            - name: REQUIREMENTS
+              key: customfield_11858
+              schema:
+                datatype: string
+            - name: Change risk
+              key: customfield_11736
+              schema:
+                datatype: option
+            - name: SUPPORTING ANALYTICS
+              key: customfield_11857
+              schema:
+                datatype: string
+            - name: Backout plan
+              key: customfield_11739
+              schema:
+                datatype: string
+            - name: Environment
+              key: customfield_11859
+              schema:
+                datatype: option
+            - name: Implementation plan
+              key: customfield_11738
+              schema:
+                datatype: string
+            - name: Affected hardware
+              key: customfield_11731
+              schema:
+                datatype: string
+            - name: Approvers
+              key: customfield_11730
+              schema:
+                datatype: array
+                items: user
+            - name: Time to done
+              key: customfield_11851
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: Code Release
+              key: customfield_11843
+              schema:
+                datatype: array
+                items: option
+            - name: Trimester
+              key: customfield_11722
+              schema:
+                datatype: option
+            - name: Designs ready
+              key: customfield_11842
+              schema:
+                datatype: number
+            - name: Tags
+              key: customfield_11600
+              schema:
+                datatype: array
+                items: string
+            - name: 'Capitalizable '
+              key: customfield_11845
+              schema:
+                datatype: array
+                items: option
+            - name: '[CHART] Time in Status'
+              key: customfield_11724
+              schema:
+                datatype: any
+            - name: Date Reported
+              key: customfield_11602
+              schema:
+                datatype: date
+            - name: Project work
+              key: customfield_11844
+              schema:
+                datatype: array
+                items: option
+            - name: '[CHART] Date of First Response'
+              key: customfield_11723
+              schema:
+                datatype: datetime
+            - name: Capitalizable
+              key: customfield_11847
+              schema:
+                datatype: array
+                items: option
+            - name: Impact
+              key: customfield_11726
+              schema:
+                datatype: option
+            - name: Urgency
+              key: customfield_11725
+              schema:
+                datatype: option
+            - name: Product categorization
+              key: customfield_11728
+              schema:
+                datatype: option-with-child
+            - name: Pending reason
+              key: customfield_11727
+              schema:
+                datatype: option
+            - name: Operational categorization
+              key: customfield_11729
+              schema:
+                datatype: option-with-child
+    types:
+        - id: "6"
+          name: Epic
+          handle: Epic
+          subtask: false
+        - id: "7"
+          name: Story
+          handle: Story
+          subtask: false
+        - id: "1"
+          name: Bug
+          handle: Bug
+          subtask: false
+        - id: "3"
+          name: Task
+          handle: Task
+          subtask: false
+        - id: "5"
+          name: Sub-task
+          handle: Sub-task
+          subtask: true
+login: stefan.todorov@liveauctioneers.com
+project:
+    key: DS
+    type: classic
+server: https://auctiontechnologygroup.atlassian.net
