@@ -39,7 +39,7 @@ alias prune_git_branches_merged_to_main='git checkout -q main && git for-each-re
 alias c='code'
 alias cr='code -r'
 function zc {
-    z $1 && c .
+    z $1 && c . && cd -
 }
 function zcr {
     z $1 && cr .
