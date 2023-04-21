@@ -58,3 +58,5 @@ alias pchgacmp='pch && gacmp'
 alias ls='exa -a'
 alias ll='exa -lag --header'
 alias mkdir='mkdir -p'
+
+alias srv='simple-http-server'
