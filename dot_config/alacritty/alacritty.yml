@@ -1,0 +1,92 @@
+import:
+  - ~/.config/alacritty/os_specific.yml
+
+window:
+  dimensions:
+    columns: 100
+    lines: 30
+  padding:
+    x: 0
+    y: 0
+  dynamic_padding: true
+  decorations: full
+  opacity: 1
+  # Make `Option` key behave as `Alt` (macOS only):
+  #   - OnlyLeft
+  #   - OnlyRight
+  #   - Both
+  #   - None (default)
+  #option_as_alt: None
+
+scrolling:
+  history: 100000
+  multiplier: 3
+
+font:
+  normal:
+    family: IosevkaCustom Nerd Font
+    style: Regular
+  bold:
+    family: IosevkaCustom Nerd Font
+    style: Bold
+  italic:
+    family: IosevkaCustom Nerd Font
+    style: Italic
+  bold_italic:
+    family: IosevkaCustom Nerd Font
+    style: Bold Italic
+  size: 16
+  offset:
+    x: 2
+    y: 0
+  # Use built-in font for box drawing characters.
+  #
+  # If `true`, Alacritty will use a custom built-in font for box drawing
+  # characters (Unicode points 2500 - 259f).
+  #
+  #builtin_box_drawing: true
+
+# Colors - https://github.com/olimorris/onedarkpro.nvim
+colors:
+  primary:
+    background: "#282c34"
+    foreground: "#abb2bf"
+
+  normal:
+    black: "#282c34"
+    red: "#ef596f"
+    green: "#89ca78"
+    yellow: "#e5c07b"
+    blue: "#61afef"
+    magenta: "#d55fde"
+    cyan: "#2bbac5"
+    white: "#abb2bf"
+
+  bright:
+    black: "#3e4451"
+    red: "#f38897"
+    green: "#a9d89d"
+    yellow: "#edd4a6"
+    blue: "#8fc6f4"
+    magenta: "#e089e7"
+    cyan: "#4bced8"
+    white: "#c8cdd5"
+
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+
+  selection:
+    text: CellForeground
+    background: "#5c6370"
+
+cursor:
+  style:
+    shape: Beam
+  unfocused_hollow: true
+
+live_config_reload: true
+
+key_bindings:
+  - { key: N, mods: Control|Shift, action: SpawnNewInstance }
+  - { key: N, mods: Command|Shift, action: SpawnNewInstance }
