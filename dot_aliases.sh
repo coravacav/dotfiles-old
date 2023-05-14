@@ -60,3 +60,5 @@ alias ll='exa -lag --header'
 alias mkdir='mkdir -p'
 
 alias srv='simple-http-server'
+
+alias nv='nvim'
