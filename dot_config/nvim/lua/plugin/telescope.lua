@@ -28,7 +28,7 @@ return {
         },
         {
             '<leader>pv',
-            ':Telescope file_browser path=%:p:h select_buffer=true',
+            ':Telescope file_browser path=%:p:h select_buffer=true<cr>',
             desc = "Open the telescope file browser"
         }
     },
@@ -57,8 +57,10 @@ return {
                 },
             },
             defaults = {
-                layout_config = {
-                    vertical = { width = 0.5 }
+                layout_strategy = 'vertical',
+                layout_config = { 
+                    vertical = { width = 0.9, height = 0.9 },
+                    preview_cutoff = 0
                 },
                 mappings = {
                     i = {["<esc>"] = actions.close }
@@ -68,5 +70,5 @@ return {
 
         telescope.load_extension("zf-native")
         telescope.load_extension("file_browser")
-    end
+    end,
 }
