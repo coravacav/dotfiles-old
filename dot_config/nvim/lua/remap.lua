@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Currently using telescope-file-browser
 
 -- remove the JHLK 
 vim.keymap.set("n", "j", "<nop>") -- down
@@ -13,7 +13,8 @@ vim.keymap.set("n", "<c-w>k", "<nop>")
 
 -- replace the normal window movement keys
 vim.keymap.set("n", "<c-w><c-down>", "<c-w>j")
-vim.keymap.set("n", "<c-w><c-left>", "<c-w>h") vim.keymap.set("n", "<c-w><c-right>", "<c-w>l")
+vim.keymap.set("n", "<c-w><c-left>", "<c-w>h") 
+vim.keymap.set("n", "<c-w><c-right>", "<c-w>l")
 vim.keymap.set("n", "<c-w><c-up>", "<c-w>k")
 -- ! not including rotational 
 -- c-w c-w is how you cycle through all
@@ -66,4 +67,3 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- <leader> s now replaces the word!
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
