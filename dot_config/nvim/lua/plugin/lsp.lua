@@ -25,6 +25,9 @@ return {
 
         -- Rust
         { 'simrat39/rust-tools.nvim' },
+
+        -- Typescript
+        { 'jose-elias-alvarez/typescript.nvim' },
     },
     lazy = false,
     config = function()
@@ -58,9 +61,13 @@ return {
             'html',
         })
 
+        -- We handle this with typescript.nvim instead
+        lsp.skip_server_setup({'tsserver'})
+
         lsp.setup()
 
         require('lsp_configs/rust')
+        require('lsp_configs/typescript')
 
         -- Completion
         local cmp = require('cmp')

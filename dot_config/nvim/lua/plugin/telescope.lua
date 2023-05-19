@@ -17,6 +17,11 @@ return {
             desc = "Search current buffer"
         },
         {
+            '<leader>pp',
+            function() require("telescope.builtin").commands() end,
+            desc = "Vim command palette"
+        },
+        {
             '<leader>ph',
             function() require("telescope.builtin").help_tags() end,
             desc = "Search for string globally"
