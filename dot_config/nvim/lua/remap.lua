@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Currently using telescope-file-browser
 
--- remove the JHLK 
+-- remove the JHLK
 vim.keymap.set("n", "j", "<nop>") -- down
 vim.keymap.set("n", "h", "<nop>") -- left
 vim.keymap.set("n", "l", "<nop>") -- right
@@ -13,14 +13,19 @@ vim.keymap.set("n", "<c-w>k", "<nop>")
 
 -- replace the normal window movement keys
 vim.keymap.set("n", "<c-w><c-down>", "<c-w>j")
-vim.keymap.set("n", "<c-w><c-left>", "<c-w>h") 
+vim.keymap.set("n", "<c-w><c-left>", "<c-w>h")
 vim.keymap.set("n", "<c-w><c-right>", "<c-w>l")
 vim.keymap.set("n", "<c-w><c-up>", "<c-w>k")
--- ! not including rotational 
+-- ! not including rotational
 -- c-w c-w is how you cycle through all
+-- replace the normal window resize keys
+vim.keymap.set("n", "<c-w><c-5>", "<c-w>-") -- decrease vertical height
+vim.keymap.set("n", "<c-w><c-4>", "<c-w><") -- decrease horizontal width
+vim.keymap.set("n", "<c-w><c-6>", "<c-w>>") -- increase horizontal width
+vim.keymap.set("n", "<c-w><c-8>", "<c-w>+") -- increase vertical height
 
 --- line movement
-vim.keymap.set("v", "<a-up>",   ":m '<-2<CR>gv=gv") -- restores alt up
+vim.keymap.set("v", "<a-up>", ":m '<-2<CR>gv=gv")   -- restores alt up
 vim.keymap.set("v", "<a-down>", ":m '>+1<CR>gv=gv") -- restores alt down
 
 -- append next line with a space (usually J) without cursor movement
@@ -40,7 +45,7 @@ vim.keymap.set("n", "<c-d>", "<nop>")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- <leader> p will now paste without copying 
+-- <leader> p will now paste without copying
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 -- <leader> y will now copy to system clipboard as well
