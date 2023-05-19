@@ -22,6 +22,9 @@ return {
         { 'hrsh7th/cmp-nvim-lsp' },
         { 'hrsh7th/cmp-buffer' },
         { 'saadparwaiz1/cmp_luasnip' },
+
+        -- Rust
+        { 'simrat39/rust-tools.nvim' },
     },
     config = function()
         local lsp = require('lsp-zero').preset({})
@@ -56,7 +59,17 @@ return {
 
         lsp.setup()
 
-        -- You need to setup `cmp` after lsp-zero
+        -- Rust
+        local rust_tools = require('rust-tools')
+        rust_tools.setup({
+            server = {
+                on_attach = function()
+                    vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+                end
+            }
+        })
+
+        -- Completion
         local cmp = require('cmp')
         local cmp_action = require('lsp-zero').cmp_action()
 
