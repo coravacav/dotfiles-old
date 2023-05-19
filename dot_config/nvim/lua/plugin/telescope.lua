@@ -1,29 +1,29 @@
 return {
-	'nvim-telescope/telescope.nvim',
+    'nvim-telescope/telescope.nvim',
     keys = {
         {
-            '<leader>pe', 
-            function() require("telescope.builtin").find_files() end, 
+            '<leader>pe',
+            function() require("telescope.builtin").find_files() end,
             desc = "File search"
         },
---        {
---            '<leader>pg', 
---            function() require("telescope.builtin").git_files() end, 
---            desc = "File search respecting git ingore"
---        },
+        --        {
+        --            '<leader>pg',
+        --            function() require("telescope.builtin").git_files() end,
+        --            desc = "File search respecting git ingore"
+        --        },
         {
-            '<leader>pt', 
-            function() require("telescope.builtin").treesitter() end, 
+            '<leader>pt',
+            function() require("telescope.builtin").treesitter() end,
             desc = "Search treesitter symbols"
         },
         {
-            '<leader>pf', 
-            function() require("telescope.builtin").current_buffer_fuzzy_find() end, 
+            '<leader>pf',
+            function() require("telescope.builtin").current_buffer_fuzzy_find() end,
             desc = "Search current buffer"
         },
         {
-            '<leader>ps', 
-            function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }) end, 
+            '<leader>ps',
+            function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }) end,
             desc = "Search for string globally"
         },
         {
@@ -32,12 +32,12 @@ return {
             desc = "Open the telescope file browser"
         }
     },
-	dependencies = { 
+    dependencies = {
         'nvim-lua/plenary.nvim',
         'natecraddock/telescope-zf-native.nvim',
         'nvim-telescope/telescope-file-browser.nvim',
     },
-    config = function ()
+    config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
 
@@ -58,12 +58,12 @@ return {
             },
             defaults = {
                 layout_strategy = 'vertical',
-                layout_config = { 
+                layout_config = {
                     vertical = { width = 0.9, height = 0.9 },
                     preview_cutoff = 0
                 },
                 mappings = {
-                    i = {["<esc>"] = actions.close }
+                    i = { ["<esc>"] = actions.close }
                 }
             }
         })
