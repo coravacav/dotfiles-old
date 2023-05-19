@@ -4,7 +4,7 @@ return {
         require('lualine').setup({
             globalstatus = true,
             sections = {
-                lualine_x = { 'selectioncount', 'filetype' }
+                lualine_x = { 'filetype' }
             }
         })
     end,

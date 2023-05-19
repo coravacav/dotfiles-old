@@ -94,6 +94,9 @@ return {
 
                         -- I want to be able to create a file like I normally would
                         ["<c-n>"] = file_browser.create,
+
+                        -- r sounds rename-y
+                        ["<c-r>"] = file_browser.rename,
                     }
                 }
             }
