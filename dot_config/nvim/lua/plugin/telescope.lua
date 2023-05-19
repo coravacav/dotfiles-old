@@ -6,11 +6,6 @@ return {
             function() require("telescope.builtin").find_files() end,
             desc = "File search"
         },
-        --        {
-        --            '<leader>pg',
-        --            function() require("telescope.builtin").git_files() end,
-        --            desc = "File search respecting git ingore"
-        --        },
         {
             '<leader>pt',
             function() require("telescope.builtin").treesitter() end,
@@ -82,7 +77,9 @@ return {
             }
         })
 
+        -- This improves ordering of results when searching for files prioritizes filenames
         telescope.load_extension("zf-native")
+
         telescope.load_extension("file_browser")
     end,
 }
