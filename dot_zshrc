@@ -67,7 +67,7 @@ export DENO_INSTALL="/home/mask/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 # update chezmoi blindly
-chezmoi update
+chezmoi update &
 
 # use nvim
 export VISUAL=vim
