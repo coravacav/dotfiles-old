@@ -40,6 +40,7 @@ return {
     config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
+        local file_browser = require("telescope").extensions.file_browser.actions
 
         telescope.setup({
             extensions = {
@@ -63,7 +64,10 @@ return {
                     preview_cutoff = 0
                 },
                 mappings = {
-                    i = { ["<esc>"] = actions.close }
+                    i = {
+                        ["<esc>"] = actions.close,
+                        ["<c-n>"] = file_browser.create,
+                    }
                 }
             }
         })
