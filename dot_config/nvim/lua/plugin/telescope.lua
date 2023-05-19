@@ -56,6 +56,11 @@ return {
                         match_filename = false,
                     }
                 },
+                file_browser = {
+                    hidden = true,
+                    respect_gitignore = false,
+                    hijack_netrw = true,
+                }
             },
             defaults = {
                 layout_strategy = 'vertical',
