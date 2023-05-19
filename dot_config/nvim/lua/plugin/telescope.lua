@@ -54,7 +54,7 @@ return {
                         -- I installed this for a reason
                         enable = true,
 
-                        -- Ooh, shiny 
+                        -- Ooh, shiny
                         highlight_results = true,
 
                         -- Crazy enough, while searching for files, considering the filename is useful.

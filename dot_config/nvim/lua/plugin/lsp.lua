@@ -23,6 +23,9 @@ return {
         { 'hrsh7th/cmp-buffer' },
         { 'saadparwaiz1/cmp_luasnip' },
 
+        -- Better completion display
+        { 'onsails/lspkind.nvim' },
+
         -- Rust
         { 'simrat39/rust-tools.nvim' },
 
@@ -75,17 +78,7 @@ return {
 
         cmp.setup({
             formatting = {
-                format = function(entry, vim_item)
-                    if entry.source.name == "buffer" then
-                        vim_item.menu = "[Buffer]"
-                    elseif entry.source.name == "nvim_lsp" then
-                        vim_item.menu = '{' .. entry.source.source.client.name .. '}'
-                    else
-                        vim_item.menu = '[' .. entry.source.name .. ']'
-                    end
-
-                    return vim_item
-                end
+                format = require('lspkind').cmp_format(),
             },
             mapping = {
                 -- `Enter` key to confirm completion
