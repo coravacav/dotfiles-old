@@ -1,4 +1,0 @@
-shell:
-  program: wsl
-  args:
-    - --cd ~
