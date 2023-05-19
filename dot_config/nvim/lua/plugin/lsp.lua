@@ -40,18 +40,18 @@ return {
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
         lsp.ensure_installed({
-           'lua-langauge-server', 
-           'taplo',
-           'tsserver',
-           'eslint',
-           'rust_analyzer',
-           'cssls',
-           'tailwindcss',
-           'svelte',
-           'yamlls',
-           'marksman',
-           'jsonls',
-           'html',
+            'lua_ls',
+            'taplo',
+            'tsserver',
+            'eslint',
+            'rust_analyzer',
+            'cssls',
+            'tailwindcss',
+            'svelte',
+            'yamlls',
+            'marksman',
+            'jsonls',
+            'html',
         })
 
         lsp.setup()
