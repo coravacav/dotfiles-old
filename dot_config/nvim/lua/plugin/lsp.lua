@@ -62,7 +62,7 @@ return {
         })
 
         -- We handle this with typescript.nvim instead
-        lsp.skip_server_setup({'tsserver'})
+        lsp.skip_server_setup({ 'tsserver' })
 
         lsp.setup()
 
@@ -74,6 +74,19 @@ return {
         local cmp_action = require('lsp-zero').cmp_action()
 
         cmp.setup({
+            formatting = {
+                format = function(entry, vim_item)
+                    if entry.source.name == "buffer" then
+                        vim_item.menu = "[Buffer]"
+                    elseif entry.source.name == "nvim_lsp" then
+                        vim_item.menu = '{' .. entry.source.source.client.name .. '}'
+                    else
+                        vim_item.menu = '[' .. entry.source.name .. ']'
+                    end
+
+                    return vim_item
+                end
+            },
             mapping = {
                 -- `Enter` key to confirm completion
                 ['<cr>'] = cmp.mapping.confirm({ select = false }),
