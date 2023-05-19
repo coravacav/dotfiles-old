@@ -22,6 +22,11 @@ return {
             desc = "Search current buffer"
         },
         {
+            '<leader>ph',
+            function() require("telescope.builtin").help_tags() end,
+            desc = "Search for string globally"
+        },
+        {
             '<leader>ps',
             function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }) end,
             desc = "Search for string globally"
