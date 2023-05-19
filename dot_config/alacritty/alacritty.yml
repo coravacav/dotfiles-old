@@ -24,16 +24,16 @@ scrolling:
 
 font:
   normal:
-    family: IosevkaCustom Nerd Font
+    family: IosevkaTerm Nerd Font Mono
     style: Regular
   bold:
-    family: IosevkaCustom Nerd Font
+    family: IosevkaTerm Nerd Font Mono
     style: Bold
   italic:
-    family: IosevkaCustom Nerd Font
+    family: IosevkaTerm Nerd Font Mono
     style: Italic
   bold_italic:
-    family: IosevkaCustom Nerd Font
+    family: IosevkaTerm Nerd Font Mono
     style: Bold Italic
   size: 16
   offset:
@@ -49,36 +49,45 @@ font:
 # Colors - https://github.com/olimorris/onedarkpro.nvim
 colors:
   primary:
-    background: "#282c34"
-    foreground: "#abb2bf"
-
-  normal:
-    black: "#282c34"
-    red: "#ef596f"
-    green: "#89ca78"
-    yellow: "#e5c07b"
-    blue: "#61afef"
-    magenta: "#d55fde"
-    cyan: "#2bbac5"
-    white: "#abb2bf"
-
-  bright:
-    black: "#3e4451"
-    red: "#f38897"
-    green: "#a9d89d"
-    yellow: "#edd4a6"
-    blue: "#8fc6f4"
-    magenta: "#e089e7"
-    cyan: "#4bced8"
-    white: "#c8cdd5"
-
+    background: "0x232136"
+    foreground: "0xe0def4"
   cursor:
-    text: CellBackground
-    cursor: CellForeground
-
+    text: "0xe0def4"
+    cursor: "0x56526e"
+  vi_mode_cursor:
+    text: "0xe0def4"
+    cursor: "0x56526e"
+  line_indicator:
+    foreground: None
+    background: None
   selection:
-    text: CellForeground
-    background: "#5c6370"
+    text: "0xe0def4"
+    background: "0x44415a"
+  normal:
+    black: "0x393552"
+    red: "0xeb6f92"
+    green: "0x3e8fb0"
+    yellow: "0xf6c177"
+    blue: "0x9ccfd8"
+    magenta: "0xc4a7e7"
+    cyan: "0xea9a97"
+    white: "0xe0def4"
+  bright:
+    black: "0x6e6a86"
+    red: "0xeb6f92"
+    green: "0x3e8fb0"
+    yellow: "0xf6c177"
+    blue: "0x9ccfd8"
+    magenta: "0xc4a7e7"
+    cyan: "0xea9a97"
+    white: "0xe0def4"
+  hints:
+    start:
+      foreground: "#908caa"
+      background: "#2a273f"
+    end:
+      foreground: "#6e6a86"
+      background: "#2a273f"
 
 cursor:
   style:
@@ -90,3 +99,4 @@ live_config_reload: true
 key_bindings:
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
   - { key: N, mods: Command|Shift, action: SpawnNewInstance }
+  - { key: Space, mods: Control, chars: "\x00" }
