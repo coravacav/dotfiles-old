@@ -2,6 +2,6 @@
 return {
     'tpope/vim-fugitive',
     keys = {
-        {'<leader>gs', function() vim.cmd.Git() end }
+        {'<leader>gs', function() vim.cmd('vert Git | vert res 40') end }
     },
 }
