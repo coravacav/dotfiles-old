@@ -68,3 +68,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 # update chezmoi blindly
 chezmoi update
+
+# use nvim
+export VISUAL=vim
+export EDITOR="$VISUAL"
