@@ -63,3 +63,4 @@ alias mkdir='mkdir -p'
 alias srv='simple-http-server'
 
 alias nv='nvim'
+alias tmux='TERM=screen-256color-bce tmux'
