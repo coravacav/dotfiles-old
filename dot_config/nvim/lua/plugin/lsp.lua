@@ -37,6 +37,9 @@ return {
 
         -- Prettier
         { 'MunifTanjim/prettier.nvim' },
+
+        -- Make errors prettier
+        { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' }
     },
     lazy = false,
     config = function()
@@ -99,6 +102,10 @@ return {
                 -- Navigate between snippet placeholder
                 -- ['<c-f>'] = cmp_action.luasnip_jump_forward(),
                 -- ['<c-b>'] = cmp_action.luasnip_jump_backward(),
+
+                -- "Super Tab"
+                ['<Tab>'] = cmp_action.luasnip_supertab(),
+                ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
             },
             sources = {
                 { name = 'path' },
@@ -108,5 +115,29 @@ return {
                 { name = 'luasnip', keyword_length = 2 },
             },
         })
-    end
+
+        -- Add the cool lines that point to where issues are
+        require('lsp_lines').setup()
+
+        -- Remove the virtual text since I don't need the issues twice.
+        vim.diagnostic.config({
+            virtual_text = false,
+        })
+    end,
+    keys = {
+        {
+            "<leader>tll",
+            function() require('lsp_lines').toggle() end,
+            desc = "Toggle LSP lines"
+        },
+        {
+            "<leader>tlt",
+            function()
+                vim.diagnostic.config({
+                    virtual_text = not vim.diagnostic.config().virtual_text
+                })
+            end,
+            desc = "Toggle virtual lines"
+        }
+    },
 }
