@@ -1,40 +1,42 @@
+require('keyset')
+
 return {
     'nvim-telescope/telescope.nvim',
     keys = {
         {
-            '<leader>pe',
+            desc = "File search",
+            Leader .. Project .. 'e',
             function() require("telescope.builtin").find_files() end,
-            desc = "File search"
         },
         {
-            '<leader>pt',
+            desc = "Search treesitter symbols",
+            Leader .. Project .. 't',
             function() require("telescope.builtin").treesitter() end,
-            desc = "Search treesitter symbols"
         },
         {
-            '<leader>pf',
+            desc = "Search current buffer",
+            Leader .. Project .. 'f',
             function() require("telescope.builtin").current_buffer_fuzzy_find() end,
-            desc = "Search current buffer"
         },
         {
-            '<leader>pp',
+            desc = "Vim command palette",
+            Leader .. Project .. 'p',
             function() require("telescope.builtin").commands() end,
-            desc = "Vim command palette"
         },
         {
-            '<leader>ph',
+            desc = "Search for string globally",
+            Leader .. Project .. 'h',
             function() require("telescope.builtin").help_tags() end,
-            desc = "Search for string globally"
         },
         {
-            '<leader>ps',
+            desc = "Search for string globally",
+            Leader .. Project .. 's',
             function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }) end,
-            desc = "Search for string globally"
         },
         {
-            '<leader>pv',
+            desc = "Open the telescope file browser",
+            Leader .. Project .. 'v',
             ':Telescope file_browser path=%:p:h select_buffer=true<cr>',
-            desc = "Open the telescope file browser"
         }
     },
     dependencies = {

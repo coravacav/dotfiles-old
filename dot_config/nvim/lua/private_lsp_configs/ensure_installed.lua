@@ -1,0 +1,15 @@
+return {
+    'lua_ls',
+    'taplo',
+    'tsserver',
+    'eslint',
+    'rust_analyzer',
+    'cssls',
+    'tailwindcss',
+    'svelte',
+    'yamlls',
+    'marksman',
+    'bashls',
+    'jsonls',
+    'html',
+}

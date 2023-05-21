@@ -1,6 +1,40 @@
 return {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
+    lazy = false,
+    config = function()
+        -- Entrypoint to all LSP configs here.
+
+        local lsp = require('lsp-zero').preset({})
+
+        -- This is shared with everything, keep it in one spot
+        lsp.on_attach(require('lsp_configs.on_attach'))
+
+        -- This is for NVIM Lua support.
+        require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+        -- This is all the servers mason will ensure are installed
+        lsp.ensure_installed(require('lsp_configs.ensure_installed'))
+
+        -- We handle this with typescript.nvim instead
+        lsp.skip_server_setup({ 'tsserver' })
+
+        -- Start lsp-zero
+        lsp.setup()
+
+        -- Setup configs after lsp-zero is "setup"
+        require('lsp_configs.lang_configs')
+
+        -- Completion
+        require('lsp_configs.cmp')
+
+        -- Make errors pretty (when they're turned on)
+        require('lsp_lines').setup()
+        vim.diagnostic.config({
+            virtual_text = true,
+            virtual_lines = false,
+        })
+    end,
     dependencies = {
         -- LSP Support
         { 'neovim/nvim-lspconfig' }, -- Required
@@ -39,105 +73,16 @@ return {
         { 'MunifTanjim/prettier.nvim' },
 
         -- Make errors prettier
-        { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' }
-    },
-    lazy = false,
-    config = function()
-        local lsp = require('lsp-zero').preset({})
+        { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
 
-        lsp.on_attach(function(client, bufnr)
-            lsp.default_keymaps({ buffer = bufnr })
-            local opts = { buffer = bufnr }
-
-
-            vim.keymap.set({ 'n', 'x' }, '<leader>fa', function()
-                vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-            end, opts)
-        end)
-
-        -- (Optional) Configure lua language server for neovim
-        require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-        lsp.ensure_installed({
-            'lua_ls',
-            'taplo',
-            'tsserver',
-            'eslint',
-            'rust_analyzer',
-            'cssls',
-            'tailwindcss',
-            'svelte',
-            'yamlls',
-            'marksman',
-            'jsonls',
-            'html',
-        })
-
-        -- We handle this with typescript.nvim instead
-        lsp.skip_server_setup({ 'tsserver' })
-
-        -- Start lsp-zero
-        lsp.setup()
-
-        -- Config languages individually
-        require('lsp_configs/rust')
-        require('lsp_configs/typescript')
-        require('lsp_configs/prettier')
-
-        -- Completion
-        local cmp = require('cmp')
-        local cmp_action = require('lsp-zero').cmp_action()
-
-        cmp.setup({
-            formatting = {
-                format = require('lspkind').cmp_format(),
-            },
-            mapping = {
-                -- `Enter` key to confirm completion
-                ['<cr>'] = cmp.mapping.confirm({ select = false }),
-
-                -- Ctrl+Space to trigger completion menu
-                ['<c-space>'] = cmp.mapping.complete(),
-
-                -- Navigate between snippet placeholder
-                -- ['<c-f>'] = cmp_action.luasnip_jump_forward(),
-                -- ['<c-b>'] = cmp_action.luasnip_jump_backward(),
-
-                -- "Super Tab"
-                ['<Tab>'] = cmp_action.luasnip_supertab(),
-                ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-            },
-            sources = {
-                { name = 'path' },
-                { name = 'nvim_lsp' },
-                { name = 'nvim_lua' },
-                { name = 'buffer',  keyword_length = 3 },
-                { name = 'luasnip', keyword_length = 2 },
-            },
-        })
-
-        -- Add the cool lines that point to where issues are
-        require('lsp_lines').setup()
-
-        -- Remove the virtual text since I don't need the issues twice.
-        vim.diagnostic.config({
-            virtual_text = false,
-        })
-    end,
-    keys = {
+        -- Add more lua help for neovim
         {
-            "<leader>tll",
-            function() require('lsp_lines').toggle() end,
-            desc = "Toggle LSP lines"
-        },
-        {
-            "<leader>tlt",
-            function()
-                vim.diagnostic.config({
-                    virtual_text = not vim.diagnostic.config().virtual_text
-                })
-            end,
-            desc = "Toggle virtual lines"
+            'folke/neodev.nvim',
+            ft = 'lua',
+            config = function()
+                require('neodev').setup()
+            end
+            -- Config languages individually
         }
     },
 }
