@@ -26,11 +26,17 @@ return {
         -- Better completion display
         { 'onsails/lspkind.nvim' },
 
+        -- More LSP configuration helpers (for prettier atm)
+        { 'jose-elias-alvarez/null-ls.nvim' },
+
         -- Rust
         { 'simrat39/rust-tools.nvim' },
 
         -- Typescript
         { 'jose-elias-alvarez/typescript.nvim' },
+
+        -- Prettier
+        { 'MunifTanjim/prettier.nvim' },
     },
     lazy = false,
     config = function()
@@ -67,10 +73,13 @@ return {
         -- We handle this with typescript.nvim instead
         lsp.skip_server_setup({ 'tsserver' })
 
+        -- Start lsp-zero
         lsp.setup()
 
+        -- Config languages individually
         require('lsp_configs/rust')
         require('lsp_configs/typescript')
+        require('lsp_configs/prettier')
 
         -- Completion
         local cmp = require('cmp')
