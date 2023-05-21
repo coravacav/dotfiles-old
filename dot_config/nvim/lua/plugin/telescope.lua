@@ -4,6 +4,11 @@ return {
     'nvim-telescope/telescope.nvim',
     keys = {
         {
+            desc = "Register search",
+            Leader .. Project .. 'r',
+            function() require("telescope.builtin").registers() end,
+        },
+        {
             desc = "File search",
             Leader .. Project .. 'e',
             function() require("telescope.builtin").find_files() end,

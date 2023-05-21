@@ -25,11 +25,12 @@ return {
         -- Setup configs after lsp-zero is "setup"
         require('lsp_configs.lang_configs')
 
-        -- Completion
+        -- Setup completion
         require('lsp_configs.cmp')
 
         -- Make errors pretty (when they're turned on)
         require('lsp_lines').setup()
+        -- By default I don't really actually want them, cool though.
         vim.diagnostic.config({
             virtual_text = true,
             virtual_lines = false,

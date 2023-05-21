@@ -1,8 +1,7 @@
 local cmp = require('cmp')
 local lsp = require("lsp-zero")
 
-lsp.setup_nvim_cmp({
-    preselect = "none",
+cmp.setup({
     mapping = lsp.defaults.cmp_mappings({
         -- `Enter` key to confirm completion
         ['<cr>'] = cmp.mapping.confirm({ select = false }),
@@ -27,8 +26,5 @@ lsp.setup_nvim_cmp({
                 Copilot = "",
             },
         }),
-    },
-    completion = {
-        completeopt = "menu,menuone,noinsert,noselect",
     },
 })

@@ -20,10 +20,10 @@ end
 -- entry point
 Leader = '<leader>'
 
--- submenu 1
-Toggle = 't'
-
 -- category
+Toggle = 't'
+Set = 's'
+Unset = 'n'
 LSP = 'l'
 Format = 'f'
 Project = 'p'

@@ -71,3 +71,10 @@ Keyset('Remove history menu', "n", "Q", "<nop>")
 
 -- <leader> s now replaces word under cursor
 Keyset('Replace word', "n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Simpler redo
+Keyset('Redo', 'n', 'U', '<c-r>')
+Keyset('Delete redo', 'n', '<c-r>', '<nop>')
+
+Keyset('Discard highlight search', 'n', Leader .. Unset .. 'h', "<esc>:noh<cr>")
+
