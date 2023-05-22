@@ -77,4 +77,3 @@ Keyset('Redo', 'n', 'U', '<c-r>')
 Keyset('Delete redo', 'n', '<c-r>', '<nop>')
 
 Keyset('Discard highlight search', 'n', Leader .. Unset .. 'h', "<cmd>:noh<cr>")
-
