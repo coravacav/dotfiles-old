@@ -8,6 +8,7 @@ vim.opt.expandtab      = true
 vim.opt.smartindent    = true
 vim.opt.confirm        = true
 vim.opt.autoindent     = true
+vim.opt.hidden         = true
 vim.opt.autoread       = true
 vim.opt.smarttab       = true
 vim.opt.wrap           = true
