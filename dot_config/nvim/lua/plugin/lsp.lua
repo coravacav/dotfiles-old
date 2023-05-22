@@ -31,7 +31,9 @@ return {
             local lsp = require 'lspconfig'
             local coq = require 'coq'
 
-            vim.g.coq_settings.limits.completion_auto_timeout = .5
+            vim.g.coq_settings = {
+                ['limits.completion_auto_timeout'] = .5
+            }
 
             lsp.util.default_config.capabilities = vim.tbl_deep_extend(
                 'force',
