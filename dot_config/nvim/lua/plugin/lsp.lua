@@ -20,6 +20,9 @@ return {
             -- Completion
             { 'ms-jpq/coq_nvim',                             branch = 'coq', },
             { 'ms-jpq/coq.artifacts',                        branch = 'artifacts', },
+
+            -- Rust
+            { 'simrat39/rust-tools.nvim' }
         },
         config = function()
             -- neovim lua setup
@@ -27,6 +30,8 @@ return {
 
             local lsp = require 'lspconfig'
             local coq = require 'coq'
+
+            vim.g.coq_settings.limits.completion_auto_timeout = .5
 
             lsp.util.default_config.capabilities = vim.tbl_deep_extend(
                 'force',
@@ -123,6 +128,7 @@ return {
                 }
             }
 
+            -- NVIM lua
             lsp.lua_ls.setup({
                 settings = {
                     Lua = {
@@ -136,6 +142,18 @@ return {
                 }
             })
 
+            -- Rust
+            local rt = require 'rust-tools'
+            rt.setup({
+                tools = {
+                    inlay_hints = {
+                        auto = false,
+                    }
+                }
+            })
+
+            -- Begin non config section
+
             -- Make errors pretty (when they're turned on)
             require('lsp_lines').setup()
 
@@ -145,6 +163,7 @@ return {
                 virtual_lines = false,
             })
 
+            -- Start COQ
             vim.cmd(':COQnow -s')
         end,
     },
