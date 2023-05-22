@@ -174,7 +174,7 @@ return {
             -- Copilot and nvim lua
             require 'coq_3p' {
                 { src = 'nvimlua', short_name = 'nLUA' },
-                { src = 'copilot', short_name = 'COP', accept_key = '<c-tab>' }
+                { src = 'copilot', short_name = 'COP', accept_key = '<c-d>' }
             }
 
             -- Begin non config section
