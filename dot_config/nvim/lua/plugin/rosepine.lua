@@ -8,5 +8,6 @@ return {
 
         vim.cmd('colorscheme rose-pine')
     end,
+    lazy = false,
     priority = 1000,
 }

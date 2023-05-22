@@ -1,89 +1,151 @@
 return {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    lazy = false,
-    config = function()
-        -- Entrypoint to all LSP configs here.
+    {
+        'neovim/nvim-lspconfig',
+        cmd = 'LspInfo',
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            -- Install LSP servers automatically
+            {
+                'williamboman/mason.nvim',
+                build = ':MasonUpdate',
+            },
+            { 'williamboman/mason-lspconfig.nvim' },
 
-        local lsp = require('lsp-zero').preset({})
+            -- Make errors prettier
+            { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
 
-        -- This is shared with everything, keep it in one spot
-        lsp.on_attach(require('lsp_configs.on_attach'))
+            -- Add more lua help for neovim
+            { 'folke/neodev.nvim', },
 
-        -- This is for NVIM Lua support.
-        require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-        -- This is all the servers mason will ensure are installed
-        lsp.ensure_installed(require('lsp_configs.ensure_installed'))
-
-        -- We handle this with typescript.nvim instead
-        lsp.skip_server_setup({ 'tsserver' })
-
-        -- Start lsp-zero
-        lsp.setup()
-
-        -- Setup configs after lsp-zero is "setup"
-        require('lsp_configs.lang_configs')
-
-        -- Setup completion
-        require('lsp_configs.cmp')
-
-        -- Make errors pretty (when they're turned on)
-        require('lsp_lines').setup()
-        -- By default I don't really actually want them, cool though.
-        vim.diagnostic.config({
-            virtual_text = true,
-            virtual_lines = false,
-        })
-    end,
-    dependencies = {
-        -- LSP Support
-        { 'neovim/nvim-lspconfig' }, -- Required
-        {
-            -- Optional
-            'williamboman/mason.nvim',
-            build = function()
-                pcall(vim.cmd, 'MasonUpdate')
-            end,
+            -- Completion
+            { 'ms-jpq/coq_nvim',                             branch = 'coq', },
+            { 'ms-jpq/coq.artifacts',                        branch = 'artifacts', },
         },
-        { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+        config = function()
+            -- neovim lua setup
+            require('neodev').setup()
 
-        -- Autocompletion
-        { 'hrsh7th/nvim-cmp' },     -- Required
-        { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-        { 'L3MON4D3/LuaSnip' },     -- Required
+            local lsp = require 'lspconfig'
+            local coq = require 'coq'
 
-        { 'hrsh7th/cmp-path' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/cmp-buffer' },
-        { 'saadparwaiz1/cmp_luasnip' },
+            lsp.util.default_config.capabilities = vim.tbl_deep_extend(
+                'force',
+                lsp.util.default_config.capabilities,
+                coq.lsp_ensure_capabilities()
+            )
 
-        -- Better completion display
-        { 'onsails/lspkind.nvim' },
+            -- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+            -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+            -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+            -- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
-        -- More LSP configuration helpers (for prettier atm)
-        { 'jose-elias-alvarez/null-ls.nvim' },
+            vim.api.nvim_create_autocmd('LspAttach', {
+                group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+                callback = function(ev)
+                    require 'keyset'
+                    local bufnr = ev.buf
 
-        -- Rust
-        { 'simrat39/rust-tools.nvim' },
+                    KeysetB('Go to definition', 'n',
+                        Leader .. Goto .. Symbol .. 'd',
+                        function()
+                            vim.lsp.buf.definition()
+                        end, bufnr)
 
-        -- Typescript
-        { 'jose-elias-alvarez/typescript.nvim' },
+                    KeysetB('Go to type definition', 'n',
+                        Leader .. Goto .. Symbol .. 't',
+                        function()
+                            vim.lsp.buf.type_definition()
+                        end, bufnr)
 
-        -- Prettier
-        { 'MunifTanjim/prettier.nvim' },
+                    KeysetB('Go to references', 'n',
+                        Leader .. Goto .. Symbol .. 'r',
+                        function()
+                            vim.lsp.buf.type_definition()
+                        end, bufnr)
 
-        -- Make errors prettier
-        { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
+                    KeysetB('Format file', { 'n', 'x' },
+                        Leader .. Format .. 'a',
+                        function()
+                            vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+                        end, bufnr)
 
-        -- Add more lua help for neovim
-        {
-            'folke/neodev.nvim',
-            ft = 'lua',
-            config = function()
-                require('neodev').setup()
-            end
-            -- Config languages individually
-        }
+                    KeysetB(
+                        'Toggle Line Diagnostics', 'n',
+                        Leader .. Toggle .. LSP .. 'l',
+                        function()
+                            local config = vim.diagnostic.config()
+                            vim.diagnostic.config({
+                                virtual_text = not config.virtual_text,
+                                virtual_lines = not config.virtual_lines,
+                            })
+                        end, bufnr)
+
+                    -- Buffer local mappings.
+                    -- See `:help vim.lsp.*` for documentation on any of the below functions
+                    -- local opts = { buffer = ev.buf }
+                    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+                    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+                    -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+                    -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+                    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+                    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+                    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+                    -- vim.keymap.set('n', '<space>wl', function()
+                    --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                    -- end, opts)
+                    -- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+                    -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+                    -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+                    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+                    -- vim.keymap.set('n', '<space>f', function()
+                    --     vim.lsp.buf.format { async = true }
+                    -- end, opts)
+                end,
+            })
+
+            -- This is all the servers mason will ensure are installed
+            require('mason').setup()
+            require('mason-lspconfig').setup {
+                ensure_installed = {
+                    'lua_ls',
+                    'taplo',
+                    'tsserver',
+                    'eslint',
+                    'rust_analyzer',
+                    'cssls',
+                    'tailwindcss',
+                    'svelte',
+                    'yamlls',
+                    'marksman',
+                    'bashls',
+                    'jsonls',
+                    'html',
+                }
+            }
+
+            lsp.lua_ls.setup({
+                settings = {
+                    Lua = {
+                        completion = {
+                            callSnippet = "Replace"
+                        },
+                        workspace = {
+                            checkThirdParty = false
+                        }
+                    }
+                }
+            })
+
+            -- Make errors pretty (when they're turned on)
+            require('lsp_lines').setup()
+
+            -- By default I don't really actually want them, cool though.
+            vim.diagnostic.config({
+                virtual_text = true,
+                virtual_lines = false,
+            })
+
+            vim.cmd(':COQnow -s')
+        end,
     },
 }

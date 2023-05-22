@@ -54,7 +54,7 @@ return {
         local actions = require("telescope.actions")
         local file_browser = require("telescope").extensions.file_browser.actions
 
-        telescope.setup({
+        telescope.setup {
             extensions = {
                 ["zf-native"] = {
                     file = {
@@ -112,7 +112,7 @@ return {
                     }
                 }
             }
-        })
+        }
 
         -- This improves ordering of results when searching for files prioritizes filenames
         telescope.load_extension("zf-native")
