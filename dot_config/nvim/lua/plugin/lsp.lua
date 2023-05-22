@@ -20,9 +20,19 @@ return {
             -- Completion
             { 'ms-jpq/coq_nvim',                             branch = 'coq', },
             { 'ms-jpq/coq.artifacts',                        branch = 'artifacts', },
+            { 'ms-jpq/coq.thirdparty',                       branch = '3p' },
 
             -- Rust
-            { 'simrat39/rust-tools.nvim' }
+            { 'simrat39/rust-tools.nvim' },
+
+            -- Copilot
+            { 'github/copilot.vim', },
+
+            -- Eslint
+            { 'MunifTanjim/eslint.nvim' },
+
+            -- Typescript
+            { 'jose-elias-alvarez/typescript.nvim' }
         },
         config = function()
             -- neovim lua setup
@@ -149,6 +159,28 @@ return {
                     }
                 }
             })
+
+            -- Eslint
+            local eslint = require 'eslint'
+            eslint.setup({
+                bin = 'eslint',
+                code_actions = {
+                    enable = true,
+                    apply_on_save = {
+                        enable = true,
+                    },
+                    disable_rule_comment = {
+                        enable = true,
+                        location = "separate_line",
+                    },
+                },
+            })
+
+            -- Copilot and nvim lua
+            require 'coq_3p' {
+                { src = 'nvimlua', short_name = 'nLUA' },
+                { src = 'copilot', short_name = 'COP', accept_key = '<c-tab>' }
+            }
 
             -- Begin non config section
 

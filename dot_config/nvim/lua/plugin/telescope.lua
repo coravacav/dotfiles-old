@@ -1,4 +1,4 @@
-require('keyset')
+require 'keyset'
 
 return {
     'nvim-telescope/telescope.nvim',
@@ -41,7 +41,7 @@ return {
         {
             desc = "Open the telescope file browser",
             Leader .. Project .. 'v',
-            ':Telescope file_browser path=%:p:h select_buffer=true<cr>',
+            '<cmd>:Telescope file_browser path=%:p:h select_buffer=true<cr>',
         }
     },
     dependencies = {

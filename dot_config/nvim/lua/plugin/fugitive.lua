@@ -5,12 +5,12 @@ return {
         {
             desc = 'Show fugitive (git) small, on the side',
             '<leader>gss',
-            ':vert Git | vert res 40<cr>',
+            '<cmd>:vert Git | vert res 40<cr>',
         },
         {
             desc = 'Show fugitive (git) with (bad) default behavior',
             '<leader>gsf',
-            ':Git<cr>',
+            '<cmd>:Git<cr>',
         }
     },
 }

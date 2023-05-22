@@ -76,5 +76,5 @@ Keyset('Replace word', "n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left
 Keyset('Redo', 'n', 'U', '<c-r>')
 Keyset('Delete redo', 'n', '<c-r>', '<nop>')
 
-Keyset('Discard highlight search', 'n', Leader .. Unset .. 'h', "<esc>:noh<cr>")
+Keyset('Discard highlight search', 'n', Leader .. Unset .. 'h', "<cmd>:noh<cr>")
 

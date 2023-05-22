@@ -30,6 +30,5 @@ vim.opt.signcolumn     = "yes"
 vim.opt.updatetime     = 69
 vim.opt.colorcolumn    = "120"
 vim.opt.completeopt    = 'menu,menuone,preview,noselect,noinsert'
-vim.opt.guicursor      = nil
 
 vim.opt.isfname:append("@-@")
