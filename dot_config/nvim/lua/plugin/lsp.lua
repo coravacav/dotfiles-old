@@ -32,7 +32,10 @@ return {
             { 'MunifTanjim/eslint.nvim' },
 
             -- Typescript
-            { 'jose-elias-alvarez/typescript.nvim' }
+            { 'jose-elias-alvarez/typescript.nvim' },
+
+            -- Eslint
+            { 'MunifTanjim/prettier.nvim' }
         },
         config = function()
             -- neovim lua setup
@@ -151,30 +154,22 @@ return {
             })
 
             -- Rust
-            local rt = require 'rust-tools'
-            rt.setup({
+            require 'rust-tools'.setup {
                 tools = {
                     inlay_hints = {
                         auto = false,
                     }
                 }
-            })
+            }
 
             -- Eslint
-            local eslint = require 'eslint'
-            eslint.setup({
-                bin = 'eslint',
-                code_actions = {
-                    enable = true,
-                    apply_on_save = {
-                        enable = true,
-                    },
-                    disable_rule_comment = {
-                        enable = true,
-                        location = "separate_line",
-                    },
-                },
-            })
+            require 'eslint'.setup {}
+
+            -- Typescript
+            require 'typescript'.setup {}
+
+            -- Prettier
+            require 'prettier'.setup {}
 
             -- Copilot and nvim lua
             require 'coq_3p' {
