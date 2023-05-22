@@ -31,6 +31,7 @@ Goto = 'g'
 Window = 'w'
 Increase = 'i'
 Decrease = 'd'
+Git = 'g'
 
 -- atom (text)
 Symbol = 's'

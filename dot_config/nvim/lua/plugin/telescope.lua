@@ -36,7 +36,16 @@ return {
         {
             desc = "Search for string globally",
             Leader .. Project .. 's',
-            function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }) end,
+            function()
+                require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+            end,
+        },
+        {
+            desc = "See all current git changes",
+            Leader .. Project .. Git .. 'c',
+            function ()
+                require("telescope.builtin").git_status()
+            end,
         },
         {
             desc = "Open the telescope file browser",
