@@ -28,14 +28,16 @@ return {
             -- Copilot
             { 'github/copilot.vim', },
 
-            -- Eslint
-            { 'MunifTanjim/eslint.nvim' },
-
             -- Typescript
             { 'jose-elias-alvarez/typescript.nvim' },
 
-            -- Eslint
-            { 'MunifTanjim/prettier.nvim' }
+            -- Formatters
+            {
+                'jose-elias-alvarez/null-ls.nvim',
+                dependencies = {
+                    'nvim-lua/plenary.nvim'
+                }
+            },
         },
         config = function()
             -- neovim lua setup
@@ -162,14 +164,17 @@ return {
                 }
             }
 
-            -- Eslint
-            require 'eslint'.setup {}
-
             -- Typescript
             require 'typescript'.setup {}
 
-            -- Prettier
-            require 'prettier'.setup {}
+            -- Setup linters
+            local null_ls = require 'null-ls'
+            null_ls.setup {
+                sources = {
+                    null_ls.builtins.code_actions.eslint,
+                    null_ls.builtins.formatting.prettier,
+                }
+            }
 
             -- Copilot and nvim lua
             require 'coq_3p' {
