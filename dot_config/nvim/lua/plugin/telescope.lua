@@ -43,7 +43,7 @@ return {
         {
             desc = "See all current git changes",
             Leader .. Project .. Git .. 'c',
-            function ()
+            function()
                 require("telescope.builtin").git_status()
             end,
         },
