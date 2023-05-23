@@ -79,6 +79,5 @@ Keyset('Delete redo', 'n', '<c-r>', '<nop>')
 Keyset('Discard highlight search', 'n', Leader .. Unset .. 'h', "<cmd>:noh<cr>")
 
 Keyset('Exit terminal with ESC', 't', '<esc>', '<c-\\><c-n>')
-Keyset('Fast quit', 'n', Leader .. 'q', '<cmd>:q<cr>')
+Keyset('Fast quit', 'n', Leader .. 'q', '<cmd>:close<cr>')
 Keyset('Fast write', 'n', Leader .. 'w', '<cmd>:w<cr>')
-Keyset('Fast close', 'n', Leader .. 'c', '<cmd>:close<cr>')
