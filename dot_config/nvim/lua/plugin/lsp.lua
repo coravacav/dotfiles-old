@@ -95,7 +95,9 @@ return {
 
             -- Typescript
             require 'typescript'.setup {
-                on_attach = on_attach
+                server = {
+                    on_attach = on_attach
+                }
             }
 
             -- Setup linters
@@ -103,9 +105,9 @@ return {
 
             null_ls.setup {
                 sources = {
-                    -- null_ls.builtins.formatting.prettier.with({
-                    --     extra_filetypes = { "svelte" },
-                    -- }),
+                    null_ls.builtins.formatting.prettier.with({
+                        extra_filetypes = { "svelte" },
+                    }),
                     null_ls.builtins.diagnostics.eslint.with({
                         extra_filetypes = { "svelte" },
                         condition = function(utils)

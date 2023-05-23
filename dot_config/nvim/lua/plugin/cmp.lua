@@ -1,5 +1,6 @@
 return {
     'hrsh7th/nvim-cmp',
+    lazy = false,
     config = function()
         local cmp = require 'cmp'
         local lspkind = require 'lspkind'
@@ -15,6 +16,8 @@ return {
                 documentation = cmp.config.window.bordered(),
             },
             mapping = cmp.mapping.preset.insert({
+                -- ['<up>'] = cmp.mapping.select_prev_item(),
+                -- ['<down>'] = cmp.mapping.select_next_item(),
                 ['<c-up>'] = cmp.mapping.scroll_docs(-4),
                 ['<c-down>'] = cmp.mapping.scroll_docs(4),
                 ['<c-space>'] = cmp.mapping.complete(),
