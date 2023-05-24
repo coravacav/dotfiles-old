@@ -4,7 +4,7 @@ return {
         cmd = 'LspInfo',
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
-            -- Install LSP servers automatically
+            -- Install lsp servers automatically
             {
                 'williamboman/mason.nvim',
                 build = ':MasonUpdate',
@@ -41,12 +41,16 @@ return {
             require('neodev').setup()
 
             local lsp = require 'lspconfig'
+            local lsp_flags = {
+                debounce_text_changes = 50,
+            }
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-            lsp.util.default_config.capabilities = vim.tbl_deep_extend(
-                'force',
-                lsp.util.default_config.capabilities,
-                require('cmp_nvim_lsp').default_capabilities()
-            )
+            lsp.util.default_config = vim.tbl_extend('force', lsp.util.default_config or {}, {
+                on_attach = on_attach,
+                flags = lsp_flags,
+                capabilities = capabilities,
+            })
 
             -- This is all the servers mason will ensure are installed
             require('mason').setup()
@@ -80,7 +84,6 @@ return {
                         }
                     }
                 },
-                on_attach = on_attach
             })
 
             -- Rust
@@ -90,15 +93,10 @@ return {
                         auto = false,
                     }
                 },
-                on_attach = on_attach
             }
 
             -- Typescript
-            require 'typescript'.setup {
-                server = {
-                    on_attach = on_attach
-                }
-            }
+            require 'typescript'.setup {}
 
             -- Setup linters
             local null_ls = require 'null-ls'
@@ -110,19 +108,19 @@ return {
                     }),
                     null_ls.builtins.diagnostics.eslint.with({
                         extra_filetypes = { "svelte" },
-                        condition = function(utils)
-                            local check = utils.root_has_file({
-                                ".eslintrc.js",
-                                ".eslintrc.cjs",
-                                ".eslintrc.yaml",
-                                ".eslintrc.yml",
-                                ".eslintrc.json",
-                            })
-                            return check
-                        end,
+                        -- condition = function(utils)
+                        --     local check = utils.root_has_file({
+                        --         ".eslintrc.js",
+                        --         ".eslintrc.cjs",
+                        --         ".eslintrc.yaml",
+                        --         ".eslintrc.yml",
+                        --         ".eslintrc.json",
+                        --     })
+                        --     return check
+                        -- end,
                     }),
+                    require('typescript.extensions.null-ls.code-actions'),
                 },
-                on_attach = on_attach
             }
 
             -- Make errors pretty (when they're turned on)
@@ -133,9 +131,6 @@ return {
                 virtual_text = true,
                 virtual_lines = false,
             })
-
-            -- -- Start COQ
-            -- vim.cmd(':COQnow -s')
         end,
     },
 }
