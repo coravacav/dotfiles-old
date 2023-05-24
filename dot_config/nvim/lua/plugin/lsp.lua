@@ -8,8 +8,10 @@ return {
             {
                 'williamboman/mason.nvim',
                 build = ':MasonUpdate',
+                dependencies = {
+                    'WhoIsSethDaniel/mason-tool-installer.nvim',
+                },
             },
-            { 'williamboman/mason-lspconfig.nvim' },
 
             -- Make errors prettier
             { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
@@ -46,6 +48,7 @@ return {
             }
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+            -- This doesn't like actually work, so I use it below
             lsp.util.default_config = vim.tbl_extend('force', lsp.util.default_config or {}, {
                 on_attach = on_attach,
                 flags = lsp_flags,
@@ -54,22 +57,29 @@ return {
 
             -- This is all the servers mason will ensure are installed
             require('mason').setup()
-            require('mason-lspconfig').setup {
+
+            require('mason-tool-installer').setup {
                 ensure_installed = {
-                    'lua_ls',
+                    'lua-language-server',
                     'taplo',
-                    'tsserver',
-                    'eslint',
-                    'rust_analyzer',
-                    'cssls',
-                    'tailwindcss',
-                    'svelte',
-                    'yamlls',
+                    'typescript-language-server',
+                    'eslint-lsp',
+                    'eslint_d',
+                    'rust-analyzer',
+                    'css-lsp',
+                    'tailwindcss-language-server',
+                    'svelte-language-server',
+                    'yaml-language-server',
                     'marksman',
-                    'bashls',
-                    'jsonls',
-                    'html',
-                }
+                    'bash-language-server',
+                    'json-lsp',
+                    'html-lsp',
+                    'prettier',
+                },
+                auto_update = false,
+                run_on_start = true,
+                start_delay = 3000,
+                debounce_hours = 5,
             }
 
             -- NVIM lua
@@ -96,7 +106,12 @@ return {
             }
 
             -- Typescript
-            require 'typescript'.setup {}
+            require 'typescript'.setup {
+                server = {
+                    -- have to repass it
+                    on_attach = on_attach,
+                }
+            }
 
             -- Setup linters
             local null_ls = require 'null-ls'
@@ -105,9 +120,15 @@ return {
                 sources = {
                     null_ls.builtins.formatting.prettier.with({
                         extra_filetypes = { "svelte" },
+                        prefer_local = "node_modules/.bin",
                     }),
-                    null_ls.builtins.diagnostics.eslint.with({
+                    null_ls.builtins.formatting.eslint_d.with({
                         extra_filetypes = { "svelte" },
+                        prefer_local = "node_modules/.bin",
+                    }),
+                    null_ls.builtins.diagnostics.eslint_d.with({
+                        extra_filetypes = { "svelte" },
+                        prefer_local = "node_modules/.bin",
                         -- condition = function(utils)
                         --     local check = utils.root_has_file({
                         --         ".eslintrc.js",
@@ -121,6 +142,9 @@ return {
                     }),
                     require('typescript.extensions.null-ls.code-actions'),
                 },
+                on_attach = on_attach,
+                update_in_insert = true, -- Could have a performance implication
+                debug = require 'debug_flags'.null_ls,
             }
 
             -- Make errors pretty (when they're turned on)

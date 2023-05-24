@@ -1,5 +1,10 @@
 require 'keyset'
 
+-- I don't want this all the time, it's useful _sometimes_
+-- Mainly when you actually want extra context
+-- Vertical Layout Config
+local vlc = { width = 0.9, height = 0.9 }
+
 return {
     'nvim-telescope/telescope.nvim',
     keys = {
@@ -11,7 +16,7 @@ return {
         {
             desc = "File search",
             Leader .. Project .. 'e',
-            function() require("telescope.builtin").find_files() end,
+            function() require("telescope.builtin").find_files(vlc) end,
         },
         {
             desc = "Search treesitter symbols",
@@ -21,7 +26,7 @@ return {
         {
             desc = "Search current buffer",
             Leader .. Project .. 'f',
-            function() require("telescope.builtin").current_buffer_fuzzy_find() end,
+            function() require("telescope.builtin").current_buffer_fuzzy_find(vlc) end,
         },
         {
             desc = "Vim command palette",
@@ -29,15 +34,17 @@ return {
             function() require("telescope.builtin").commands() end,
         },
         {
-            desc = "Search for string globally",
+            desc = "Search help tags",
             Leader .. Project .. 'h',
-            function() require("telescope.builtin").help_tags() end,
+            function() require("telescope.builtin").help_tags(vlc) end,
         },
         {
             desc = "Search for string globally",
             Leader .. Project .. 's',
             function()
-                require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+                vim.ui.input({ prompt = "Search globally > " }, function(input)
+                    require("telescope.builtin").grep_string({ search = input })
+                end)
             end,
         },
         {
@@ -51,12 +58,19 @@ return {
             desc = "Open the telescope file browser",
             Leader .. Project .. 'v',
             '<cmd>:Telescope file_browser path=%:p:h select_buffer=true<cr>',
+        },
+        {
+            desc = "Open the vim notify history",
+            Leader .. Vim .. 'h',
+            '<cmd>:Telescope notify<cr>',
         }
     },
     dependencies = {
         'nvim-lua/plenary.nvim',
         'natecraddock/telescope-zf-native.nvim',
         'nvim-telescope/telescope-file-browser.nvim',
+        'nvim-telescope/telescope-ui-select.nvim',
+        'stevearc/dressing.nvim',
     },
     config = function()
         local telescope = require("telescope")
@@ -100,11 +114,8 @@ return {
             },
             defaults = {
                 -- Seeing the preview on top is nice, since I don't really need to see all the results
-                layout_strategy = 'vertical',
+                layout_strategy = 'flex',
                 layout_config = {
-                    -- I have a screen, might as well use most of it
-                    vertical = { width = 0.9, height = 0.9 },
-
                     -- show a preview no matter what
                     preview_cutoff = 0
                 },
@@ -118,6 +129,10 @@ return {
 
                         -- r sounds rename-y
                         ["<c-r>"] = file_browser.rename,
+
+                        -- Page keys to scroll preview
+                        ["<pageup>"] = actions.preview_scrolling_up,
+                        ["<pagedown>"] = actions.preview_scrolling_down,
                     }
                 }
             }
@@ -128,5 +143,33 @@ return {
 
         -- A mildly better extension (at least in my eyes) for file browsing.
         telescope.load_extension("file_browser")
+
+        -- Dressing was alright, but lets just use a single plugin
+        telescope.load_extension("ui-select")
+
+        require 'dressing'.setup {
+            input = {
+                enabled = true,
+                title_pos = 'center',
+                insert_only = true,
+                start_in_insert = true,
+                relative = 'editor',
+                mappings = {
+                    n = {
+                        ["<Esc>"] = "Close",
+                        ["<CR>"] = "Confirm",
+                    },
+
+                    i = {
+                        ["<C-c>"] = "Close",
+                        ["<CR>"] = "Confirm",
+                        ["<Up>"] = "HistoryPrev",
+                        ["<Down>"] = "HistoryNext",
+                    },
+                },
+            },
+            select = { enabled = false }
+        }
     end,
+    event = 'VeryLazy',
 }

@@ -14,6 +14,7 @@ vim.opt.smarttab       = true
 vim.opt.wrap           = true
 vim.opt.lazyredraw     = false
 vim.opt.timeoutlen     = 600
+vim.opt.pumheight      = 20
 vim.opt.swapfile       = false
 vim.opt.backup         = false
 vim.opt.undodir        = os.getenv("HOME") .. "/.vim/undodir"

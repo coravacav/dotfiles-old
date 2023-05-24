@@ -1,26 +1,60 @@
+-- This file effectively acts as keybindings for the LSP
+
+local debug_flags = require 'debug_flags'
+
 return function(client, bufnr)
+    debug_flags.lsp_on_attach(client.name, 'info', {
+        title = 'LSP attached',
+    })
+
+    -- Prevent formatting capabilities, we have prettier and eslint anyway
     if client.name == 'tsserver' then
         client.resolved_capabilities.document_formatting = false
     end
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    KeysetB('Go to definition', 'n',
+    KeysetB('Go to symbol definition', 'n',
         Leader .. Goto .. Symbol .. 'd',
         function()
-            vim.lsp.buf.definition()
+            require('telescope.builtin').lsp_definitions()
         end, bufnr)
 
-    KeysetB('Go to type definition', 'n',
+    KeysetB('Go to symbol type definition', 'n',
         Leader .. Goto .. Symbol .. 't',
         function()
-            vim.lsp.buf.type_definition()
+            require('telescope.builtin').lsp_type_definitions()
         end, bufnr)
 
-    KeysetB('Go to references', 'n',
+    KeysetB('Go to symbol references', 'n',
         Leader .. Goto .. Symbol .. 'r',
         function()
-            vim.lsp.buf.type_definition()
+            require('telescope.builtin').lsp_references()
+        end, bufnr)
+
+    KeysetB('Go to symbol implementation', 'n',
+        Leader .. Goto .. Symbol .. 'i',
+        function()
+            require('telescope.builtin').lsp_implementations()
+        end, bufnr)
+
+    KeysetB('Go to document (buffer) symbols', 'n',
+        Leader .. Goto .. Buffer .. Symbol,
+        function()
+            require('telescope.builtin').lsp_document_symbols()
+        end, bufnr)
+
+    KeysetB('Go to workspace symbols', 'n',
+        Leader .. Goto .. Workspace .. Symbol,
+        function()
+            require('telescope.builtin').lsp_workspace_symbols()
+            -- Possibly want require('telescope.builtin').lsp_dynamic_workspace_symbols()
+        end, bufnr)
+
+    KeysetB('Open code actions', 'n',
+        Leader .. LSP .. 'a',
+        function()
+            vim.lsp.buf.code_action()
         end, bufnr)
 
     KeysetB('Format file', { 'n', 'x' },
