@@ -36,5 +36,4 @@ for dir in $PROBLEM_DIRS; do
     mv $dir /tmp
 done
 
-
 chezmoi update 2,1&> /dev/null
