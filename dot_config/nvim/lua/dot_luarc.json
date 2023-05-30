@@ -49,5 +49,8 @@
         "/home/wrxl/.config/nvim/lua",
         "/home/wrxl/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/529c2cba",
         "/home/wrxl/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/445900b5"
+    ],
+    "diagnostics.globals": [
+        "vim"
     ]
 }

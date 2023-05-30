@@ -14,8 +14,11 @@ end
 -- Fancy printing functions
 M.lsp_on_attach = should_debug(false)
 M.lsp_on_format = should_debug(false)
+
 M.keyset_current_buffer = should_debug(false)
 M.keyset_global = should_debug(false)
+
+M.config_set = should_debug(true)
 
 -- Boring boolean flags
 M.null_ls = false

@@ -1,5 +1,5 @@
 -- This file effectively acts as keybindings for the LSP
-
+local extended_variables = require 'extended_variables'
 local debug_flags = require 'debug_flags'
 
 return function(client, bufnr)
@@ -9,6 +9,8 @@ return function(client, bufnr)
 
     -- Prevent formatting capabilities, we have prettier and eslint anyway
     if client.name == 'tsserver' then
+        vim.b[extended_variables.telescope_file_ignore_patterns] = { '%.snap', '^node_modules' }
+        debug_flags.config_set('ignored .snap and node_modules')
         client.resolved_capabilities.document_formatting = false
     end
 

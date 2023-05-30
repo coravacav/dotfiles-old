@@ -24,6 +24,19 @@ Keyset('Decrease horizontal width', "n", Leader .. Window .. Decrease .. Width, 
 Keyset('Increase horizontal width', "n", Leader .. Window .. Increase .. Width, "<c-w>>")
 Keyset('Increase vertical height', "n", Leader .. Window .. Increase .. Height, "<c-w>+")
 
+-- replace the normal window movement keys
+Keyset('Move window up', "n", Leader .. Window .. Move .. '<up>', "<c-w>J")
+Keyset('Move window left', "n", Leader .. Window .. Move .. '<left>', "<c-w>H")
+Keyset('Move window right', "n", Leader .. Window .. Move .. '<right>', "<c-w>L")
+Keyset('Move window down', "n", Leader .. Window .. Move .. '<down>', "<c-w>K")
+
+-- tabs
+Keyset('Create new tab', "n", Leader .. Tab .. Create, '<cmd>:tabnew<cr>')
+Keyset('Move to next tab', "n", Leader .. Tab .. Next, '<cmd>:tabnext<cr>')
+Keyset('Move to previous tab', "n", Leader .. Tab .. Previous, '<cmd>:tabprevious<cr>')
+Keyset('Move tab to the left', "n", Leader .. Tab .. Move .. Left, '<cmd>:tabmove -<cr>')
+Keyset('Move tab to the right', "n", Leader .. Tab .. Move .. Right, '<cmd>:tabmove +<cr>')
+
 -- line movement
 Keyset('Move selected lines up', "v", "<a-up>", ":m '<-2<CR>gv=gv")
 Keyset('Move selected lines down', "v", "<a-down>", ":m '>+1<CR>gv=gv")

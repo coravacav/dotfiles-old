@@ -11,15 +11,16 @@ vim.opt.autoindent     = true
 vim.opt.hidden         = true
 vim.opt.autoread       = true
 vim.opt.smarttab       = true
-vim.opt.wrap           = true
 vim.opt.lazyredraw     = false
 vim.opt.timeoutlen     = 600
 vim.opt.pumheight      = 20
+vim.opt.wrap           = false
+vim.opt.sidescroll     = 10
 vim.opt.swapfile       = false
 vim.opt.backup         = false
 vim.opt.undodir        = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile       = true
-vim.opt.hlsearch       = true
+vim.opt.hlsearch       = false
 vim.opt.incsearch      = true
 vim.opt.ignorecase     = true
 vim.opt.splitbelow     = true
@@ -32,5 +33,6 @@ vim.opt.signcolumn     = "yes"
 vim.opt.updatetime     = 69
 vim.opt.colorcolumn    = "120"
 vim.opt.completeopt    = 'menu,menuone,preview,noselect,noinsert'
+vim.opt.spelllang      = 'en_us'
 
 vim.opt.isfname:append("@-@")

@@ -10,7 +10,7 @@ return {
     keys = {
         {
             desc = "Open floating terminal",
-            Leader .. Toggle .. 't',
+            Leader .. Toggle .. '\\',
             '<cmd>ToggleTerm direction=float<cr>'
         },
     }

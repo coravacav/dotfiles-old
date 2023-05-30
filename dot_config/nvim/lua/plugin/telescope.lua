@@ -1,9 +1,16 @@
 require 'keyset'
+local extended_variables = require 'extended_variables'
 
--- I don't want this all the time, it's useful _sometimes_
--- Mainly when you actually want extra context
--- Vertical Layout Config
-local vlc = { width = 0.9, height = 0.9 }
+local build_opts = function(opt_overrides)
+    local opts = {}
+    opts['file_ignore_patterns'] = vim.b[extended_variables.telescope_file_ignore_patterns]
+
+    if opt_overrides then
+        opts = vim.tbl_extend('force', opts, opt_overrides)
+    end
+
+    return opts
+end
 
 return {
     'nvim-telescope/telescope.nvim',
@@ -11,39 +18,50 @@ return {
         {
             desc = "Register search",
             Leader .. Project .. 'r',
-            function() require("telescope.builtin").registers() end,
+            function() require("telescope.builtin").registers(build_opts()) end,
+        },
+        {
+            desc = "File search (incl hidden)",
+            Leader .. Project .. 'ne',
+            function()
+                require("telescope.builtin").find_files(build_opts {
+                    hidden = true,
+                    no_ignore = true,
+                    no_ignore_parent = true
+                })
+            end,
         },
         {
             desc = "File search",
             Leader .. Project .. 'e',
-            function() require("telescope.builtin").find_files(vlc) end,
+            function() require("telescope.builtin").find_files(build_opts()) end,
         },
         {
             desc = "Search treesitter symbols",
             Leader .. Project .. 't',
-            function() require("telescope.builtin").treesitter() end,
+            function() require("telescope.builtin").treesitter(build_opts()) end,
         },
         {
             desc = "Search current buffer",
             Leader .. Project .. 'f',
-            function() require("telescope.builtin").current_buffer_fuzzy_find(vlc) end,
+            function() require("telescope.builtin").current_buffer_fuzzy_find(build_opts()) end,
         },
         {
             desc = "Vim command palette",
             Leader .. Project .. 'p',
-            function() require("telescope.builtin").commands() end,
+            function() require("telescope.builtin").commands(build_opts()) end,
         },
         {
             desc = "Search help tags",
             Leader .. Project .. 'h',
-            function() require("telescope.builtin").help_tags(vlc) end,
+            function() require("telescope.builtin").help_tags(build_opts()) end,
         },
         {
             desc = "Search for string globally",
             Leader .. Project .. 's',
             function()
                 vim.ui.input({ prompt = "Search globally > " }, function(input)
-                    require("telescope.builtin").grep_string({ search = input })
+                    require("telescope.builtin").grep_string(build_opts { search = input })
                 end)
             end,
         },
@@ -51,7 +69,7 @@ return {
             desc = "See all current git changes",
             Leader .. Project .. Git .. 'c',
             function()
-                require("telescope.builtin").git_status()
+                require("telescope.builtin").git_status(build_opts())
             end,
         },
         {
@@ -76,6 +94,7 @@ return {
         local telescope = require("telescope")
         local actions = require("telescope.actions")
         local file_browser = require("telescope").extensions.file_browser.actions
+        local trouble = require("trouble.providers.telescope")
 
         telescope.setup {
             extensions = {
@@ -113,6 +132,9 @@ return {
                 }
             },
             defaults = {
+                -- I do not always want all files
+                hidden = true,
+
                 -- Seeing the preview on top is nice, since I don't really need to see all the results
                 layout_strategy = 'flex',
                 layout_config = {
@@ -133,6 +155,13 @@ return {
                         -- Page keys to scroll preview
                         ["<pageup>"] = actions.preview_scrolling_up,
                         ["<pagedown>"] = actions.preview_scrolling_down,
+
+                        -- Trouble mappings
+                        ["<c-t>"] = trouble.open_with_trouble,
+                    },
+                    n = {
+                        -- Trouble mappings
+                        ["<c-t>"] = trouble.open_with_trouble,
                     }
                 }
             }

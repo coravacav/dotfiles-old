@@ -1,6 +1,6 @@
 return {
     "m4xshen/smartcolumn.nvim",
-    lazy = false,
+    event = "BufEnter",
     config = function() require("smartcolumn").setup({
         colorcolumn = '120',
     }) end
