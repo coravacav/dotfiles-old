@@ -10,7 +10,7 @@ if ! ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
   exit
 fi
 
-chezmoi update 2,1&> /dev/null
+chezmoi update > /dev/null 2>&1
 
 # if chezmoi exited with 0, exit this script
 if [ $? -eq 0 ]; then
@@ -36,4 +36,4 @@ for dir in $PROBLEM_DIRS; do
     mv $dir /tmp
 done
 
-chezmoi update 2,1&> /dev/null
+chezmoi update > /dev/null 2>&1
