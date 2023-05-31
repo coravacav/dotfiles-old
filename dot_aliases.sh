@@ -58,8 +58,8 @@ function gcmp {
 
 alias pchgacmp='pch && gacmp'
 
-alias ls='exa -a'
-alias ll='exa -lag --header'
+alias ls='exa --icons -a'
+alias ll='exa --icons -lag --header'
 alias mkdir='mkdir -p'
 
 alias srv='simple-http-server'
