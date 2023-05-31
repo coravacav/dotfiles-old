@@ -23,7 +23,7 @@ config.window_padding = {
 config.adjust_window_size_when_changing_font_size = false
 config.enable_scroll_bar = true
 config.hide_tab_bar_if_only_one_tab = true
-config.window_decorations = "RESIZE"
+-- config.window_decorations = "RESIZE"
 config.mouse_bindings = {
     {
         event = { Drag = { streak = 1, button = 'Left' } },
