@@ -65,6 +65,21 @@ return function(client, bufnr)
             vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
         end, bufnr)
 
+    KeysetDumbSetter(
+        '%s Line Diagnostics', 'n',
+        LSP .. 'l',
+        function()
+            vim.diagnostic.config({
+                virtual_lines = true,
+            })
+        end,
+        function()
+            vim.diagnostic.config({
+                virtual_lines = false,
+            })
+        end,
+        bufnr)
+
     KeysetB(
         'Toggle Line Diagnostics', 'n',
         Leader .. Toggle .. LSP .. 'l',

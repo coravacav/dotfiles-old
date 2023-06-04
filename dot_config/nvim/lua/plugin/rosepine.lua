@@ -1,5 +1,6 @@
 return {
     'rose-pine/neovim',
+    dependencies = { 'xiyaowong/transparent.nvim' },
     config = function()
         require('rose-pine').setup({
             variant = 'moon',
@@ -7,6 +8,9 @@ return {
         })
 
         vim.cmd('colorscheme rose-pine')
+
+        require('transparent').setup {}
+        vim.cmd(':TransparentEnable')
     end,
     lazy = false,
     priority = 1000,
