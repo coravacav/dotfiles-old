@@ -8,6 +8,6 @@ return {
         }
     },
     keys = {
-        keys.leader .. keys.toggle .. '\\',
+            keys.leader .. keys.toggle .. '\\',
     }
 }

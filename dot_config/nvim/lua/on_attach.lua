@@ -1,6 +1,101 @@
 -- This file effectively acts as keybindings for the LSP
 local extended_variables = require 'extended_variables'
 local debug_flags = require 'debug_flags'
+local keys = require 'keys'
+local wk = require 'which-key'
+
+local lsp_bindings = {
+    name = "LSP ...",
+    a = { function()
+            vim.lsp.buf.code_action()
+        end, "Open code actions"},
+}
+
+local goto_bindings = {
+    name = "Goto ...",
+    [keys.symbol] = {
+        name = "Goto symbol ...",
+        [keys.definitions] = { function()
+            require('telescope.builtin').lsp_definitions()
+        end, "Goto symbol definition"},
+        [keys.type_definitions] = { function()
+            require('telescope.builtin').lsp_type_definitions()
+        end, "Goto symbol type definition"},
+        [keys.references] = { function()
+            require('telescope.builtin').lsp_references()
+        end, "Goto symbol references"},
+        [keys.implementation] = { function()
+            require('telescope.builtin').lsp_implementations()
+        end, "Goto symbol implementation"},
+    },
+    [keys.buffer] = {
+        name = "Goto document (buffer) ...",
+        [keys.symbol] = { function()
+            require('telescope.builtin').lsp_document_symbols()
+        end, "Goto document (buffer) symbols"},
+    },
+    [keys.workspace] = {
+        name = "Goto workspace ...",
+        [keys.symbol] = { function()
+            require('telescope.builtin').lsp_workspace_symbols()
+            -- Possibly want require('telescope.builtin').lsp_dynamic_workspace_symbols()
+        end, "Goto workspace symbols"},
+    }
+}
+
+local format_bindings = {
+    name = "Format ...",
+    [keys.buffer] = {
+        function()
+            vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+        end, "Format buffer"
+    }
+}
+
+local toggle_bindings = {
+    name = "Toggle ...",
+    [keys.lsp] = {
+        name = "Toggle LSP ...",
+        [keys.lsp_line] = {
+            function()
+                local config = vim.diagnostic.config()
+                vim.diagnostic.config({
+                    virtual_text = not config.virtual_text,
+                    virtual_lines = not config.virtual_lines,
+                })
+            end, "Toggle LSP line diagnostics"
+        }
+    }
+}
+
+local set_bindings = {
+    name = "Set ...",
+    [keys.lsp] = {
+        name = "Set LSP ...",
+        [keys.lsp_line] = {
+            function()
+                vim.diagnostic.config({
+                    virtual_lines = true,
+                })
+            end, "Set LSP line diagnostics"
+        }
+
+    }
+}
+
+local unset_bindings = {
+    name = "Unset ...",
+    [keys.lsp] = {
+        name = "Unset LSP ...",
+        [keys.lsp_line] = {
+            function()
+                vim.diagnostic.config({
+                    virtual_lines = false,
+                })
+            end, "Unset LSP line diagnostics"
+        }
+    }
+}
 
 return function(client, bufnr)
     debug_flags.lsp_on_attach(client.name, 'info', {
@@ -16,78 +111,15 @@ return function(client, bufnr)
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    KeysetB('Go to symbol definition', 'n',
-        Leader .. Goto .. Symbol .. 'd',
-        function()
-            require('telescope.builtin').lsp_definitions()
-        end, bufnr)
-
-    KeysetB('Go to symbol type definition', 'n',
-        Leader .. Goto .. Symbol .. 't',
-        function()
-            require('telescope.builtin').lsp_type_definitions()
-        end, bufnr)
-
-    KeysetB('Go to symbol references', 'n',
-        Leader .. Goto .. Symbol .. 'r',
-        function()
-            require('telescope.builtin').lsp_references()
-        end, bufnr)
-
-    KeysetB('Go to symbol implementation', 'n',
-        Leader .. Goto .. Symbol .. 'i',
-        function()
-            require('telescope.builtin').lsp_implementations()
-        end, bufnr)
-
-    KeysetB('Go to document (buffer) symbols', 'n',
-        Leader .. Goto .. Buffer .. Symbol,
-        function()
-            require('telescope.builtin').lsp_document_symbols()
-        end, bufnr)
-
-    KeysetB('Go to workspace symbols', 'n',
-        Leader .. Goto .. Workspace .. Symbol,
-        function()
-            require('telescope.builtin').lsp_workspace_symbols()
-            -- Possibly want require('telescope.builtin').lsp_dynamic_workspace_symbols()
-        end, bufnr)
-
-    KeysetB('Open code actions', 'n',
-        Leader .. LSP .. 'a',
-        function()
-            vim.lsp.buf.code_action()
-        end, bufnr)
-
-    KeysetB('Format file', { 'n', 'x' },
-        Leader .. Format .. 'a',
-        function()
-            vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-        end, bufnr)
-
-    KeysetDumbSetter(
-        '%s Line Diagnostics', 'n',
-        LSP .. 'l',
-        function()
-            vim.diagnostic.config({
-                virtual_lines = true,
-            })
-        end,
-        function()
-            vim.diagnostic.config({
-                virtual_lines = false,
-            })
-        end,
-        bufnr)
-
-    KeysetB(
-        'Toggle Line Diagnostics', 'n',
-        Leader .. Toggle .. LSP .. 'l',
-        function()
-            local config = vim.diagnostic.config()
-            vim.diagnostic.config({
-                virtual_text = not config.virtual_text,
-                virtual_lines = not config.virtual_lines,
-            })
-        end, bufnr)
+    wk.register({
+            [keys.lsp] = lsp_bindings,
+            [keys.goto] = goto_bindings,
+            [keys.format] = format_bindings,
+            [keys.toggle] = toggle_bindings,
+            [keys.set] = set_bindings,
+            [keys.unset] = unset_bindings,
+    }, {
+        buffer = bufnr,
+        prefix = keys.leader,
+    })
 end

@@ -1,19 +1,31 @@
 local keys = require 'keys'
+local extended_variables = require 'extended_variables'
+
+local build_opts = function(opt_overrides)
+    local opts = {}
+    opts['file_ignore_patterns'] = vim.b[extended_variables.telescope_file_ignore_patterns]
+
+    if opt_overrides then
+        opts = vim.tbl_extend('force', opts, opt_overrides)
+    end
+
+    return opts
+end
 
 return {
     'nvim-telescope/telescope.nvim',
     keys = {
-        keys.leader .. keys.telescope .. 'r',
-        keys.leader .. keys.telescope .. 'ne',
-        keys.leader .. keys.telescope .. 'e',
-        keys.leader .. keys.telescope .. 't',
-        keys.leader .. keys.telescope .. 'f',
-        keys.leader .. keys.telescope .. 'p',
-        keys.leader .. keys.telescope .. 'h',
-        keys.leader .. keys.telescope .. 's',
-        keys.leader .. keys.telescope .. 'c',
-        keys.leader .. keys.telescope .. 'v',
-        keys.leader .. keys.vim .. 'h',
+            keys.leader .. keys.telescope .. 'r',
+            keys.leader .. keys.telescope .. 'ne',
+            keys.leader .. keys.telescope .. 'e',
+            keys.leader .. keys.telescope .. 't',
+            keys.leader .. keys.telescope .. 'f',
+            keys.leader .. keys.telescope .. 'p',
+            keys.leader .. keys.telescope .. 'h',
+            keys.leader .. keys.telescope .. 's',
+            keys.leader .. keys.telescope .. Git .. 'c',
+            keys.leader .. keys.telescope .. 'v',
+            keys.leader .. keys.vim .. 'h',
     },
     dependencies = {
         'nvim-lua/plenary.nvim',
@@ -132,4 +144,5 @@ return {
             select = { enabled = false }
         }
     end,
+    event = 'VeryLazy',
 }

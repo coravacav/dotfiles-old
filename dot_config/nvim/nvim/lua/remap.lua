@@ -1,5 +1,4 @@
 local keys = require 'keys'
-
 vim.g.mapleader = " "
 
 -- remove the JHLK
@@ -20,16 +19,23 @@ keys.keyset('Move to down window', "n", "<c-w><c-up>", "<c-w>k")
 keys.keyset('Move to next window', "n", "<c-w><c-w>", "<c-w><c-w>")
 
 -- replace the normal window resize keys
-keys.keyset('Decrease vertical height', "n", keys.leader .. keys.window .. keys.decrease .. keys.height, "<c-w>-")
-keys.keyset('Decrease horizontal width', "n", keys.leader .. keys.window .. keys.decrease .. keys.width, "<c-w><")
-keys.keyset('Increase horizontal width', "n", keys.leader .. keys.window .. keys.increase .. keys.width, "<c-w>>")
-keys.keyset('Increase vertical height', "n", keys.leader .. keys.window .. keys.increase .. keys.height, "<c-w>+")
+keys.keyset('Decrease vertical height', "n", Leader .. Window .. Decrease .. Height, "<c-w>-")
+keys.keyset('Decrease horizontal width', "n", Leader .. Window .. Decrease .. Width, "<c-w><")
+keys.keyset('Increase horizontal width', "n", Leader .. Window .. Increase .. Width, "<c-w>>")
+keys.keyset('Increase vertical height', "n", Leader .. Window .. Increase .. Height, "<c-w>+")
 
 -- replace the normal window movement keys
-keys.keyset('Move window up', "n", keys.leader .. keys.window .. keys.move '<up>', "<c-w>J")
-keys.keyset('Move window left', "n", keys.leader .. keys.window .. keys.move '<left>', "<c-w>H")
-keys.keyset('Move window right', "n", keys.leader .. keys.window .. keys.move '<right>', "<c-w>L")
-keys.keyset('Move window down', "n", keys.leader .. keys.window .. keys.move '<down>', "<c-w>K")
+keys.keyset('Move window up', "n", Leader .. Window .. Move .. '<up>', "<c-w>J")
+keys.keyset('Move window left', "n", Leader .. Window .. Move .. '<left>', "<c-w>H")
+keys.keyset('Move window right', "n", Leader .. Window .. Move .. '<right>', "<c-w>L")
+keys.keyset('Move window down', "n", Leader .. Window .. Move .. '<down>', "<c-w>K")
+
+-- tabs
+keys.keyset('Create new tab', "n", Leader .. Tab .. Create, '<cmd>:tabnew<cr>')
+keys.keyset('Move to next tab', "n", Leader .. Tab .. Next, '<cmd>:tabnext<cr>')
+keys.keyset('Move to previous tab', "n", Leader .. Tab .. Previous, '<cmd>:tabprevious<cr>')
+keys.keyset('Move tab to the left', "n", Leader .. Tab .. Move .. Left, '<cmd>:tabmove -<cr>')
+keys.keyset('Move tab to the right', "n", Leader .. Tab .. Move .. Right, '<cmd>:tabmove +<cr>')
 
 -- line movement
 keys.keyset('Move selected lines up', "v", "<a-up>", ":m '<-2<CR>gv=gv")
@@ -72,9 +78,9 @@ keys.keyset('Remove history menu', "n", "Q", "<nop>")
 -- ! do more research
 -- quickfix navigation?
 -- keys.keyset("n", "<c-k>)
--- keys.keyset
--- keys.keyset
--- keys.keyset?
+-- Keyset
+-- Keyset
+-- Keyset?
 
 -- <leader> s now replaces word under cursor
 keys.keyset('Replace word', "n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -83,7 +89,7 @@ keys.keyset('Replace word', "n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI
 keys.keyset('Redo', 'n', 'U', '<c-r>')
 keys.keyset('Delete redo', 'n', '<c-r>', '<nop>')
 
-keys.keyset('Discard highlight search', 'n', keys.leader .. keys.unset .. 'h', "<cmd>:noh<cr>")
+keys.keyset('Discard highlight search', 'n', Leader .. Unset .. 'h', "<cmd>:noh<cr>")
 
 keys.keyset('Exit terminal with ESC', 't', '<esc>', '<c-\\><c-n>')
-keys.keyset('Fast close', 'n', keys.leader .. 'q', '<cmd>:close<cr>')
+keys.keyset('Fast quit', 'n', Leader .. 'q', '<cmd>:close<cr>')
