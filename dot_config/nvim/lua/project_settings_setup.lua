@@ -1,6 +1,5 @@
 local extended_variables = require 'extended_variables'
 
--- I don't know the way to get the "current directory" of a lua file.
 local path = '~/.config/nvim/lua/project_settings'
 
 local configs = {}

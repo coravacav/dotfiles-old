@@ -26,10 +26,10 @@ keys.keyset('Increase horizontal width', "n", keys.leader .. keys.window .. keys
 keys.keyset('Increase vertical height', "n", keys.leader .. keys.window .. keys.increase .. keys.height, "<c-w>+")
 
 -- replace the normal window movement keys
-keys.keyset('Move window up', "n", keys.leader .. keys.window .. keys.move '<up>', "<c-w>J")
-keys.keyset('Move window left', "n", keys.leader .. keys.window .. keys.move '<left>', "<c-w>H")
-keys.keyset('Move window right', "n", keys.leader .. keys.window .. keys.move '<right>', "<c-w>L")
-keys.keyset('Move window down', "n", keys.leader .. keys.window .. keys.move '<down>', "<c-w>K")
+keys.keyset('Move window up', "n", keys.leader .. keys.window .. keys.movement .. '<up>', "<c-w>J")
+keys.keyset('Move window left', "n", keys.leader .. keys.window .. keys.movement .. '<left>', "<c-w>H")
+keys.keyset('Move window right', "n", keys.leader .. keys.window .. keys.movement .. '<right>', "<c-w>L")
+keys.keyset('Move window down', "n", keys.leader .. keys.window .. keys.movement .. '<down>', "<c-w>K")
 
 -- line movement
 keys.keyset('Move selected lines up', "v", "<a-up>", ":m '<-2<CR>gv=gv")

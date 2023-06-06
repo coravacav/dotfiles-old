@@ -1,20 +1,20 @@
 -- This file effectively acts as keybindings for the LSP
-local extended_variables = require 'extended_variables'
+local ev = require 'extended_variables'
 local debug_flags = require 'debug_flags'
 local keys = require 'keys'
 local wk = require 'which-key'
 
 local lsp_bindings = {
-    name = "LSP ...",
+    name = "LSP",
     a = { function()
             vim.lsp.buf.code_action()
         end, "Open code actions"},
 }
 
 local goto_bindings = {
-    name = "Goto ...",
+    name = "Goto",
     [keys.symbol] = {
-        name = "Goto symbol ...",
+        name = "Goto symbol",
         [keys.definitions] = { function()
             require('telescope.builtin').lsp_definitions()
         end, "Goto symbol definition"},
@@ -29,13 +29,13 @@ local goto_bindings = {
         end, "Goto symbol implementation"},
     },
     [keys.buffer] = {
-        name = "Goto document (buffer) ...",
+        name = "Goto document (buffer)",
         [keys.symbol] = { function()
             require('telescope.builtin').lsp_document_symbols()
         end, "Goto document (buffer) symbols"},
     },
     [keys.workspace] = {
-        name = "Goto workspace ...",
+        name = "Goto workspace",
         [keys.symbol] = { function()
             require('telescope.builtin').lsp_workspace_symbols()
             -- Possibly want require('telescope.builtin').lsp_dynamic_workspace_symbols()
@@ -44,7 +44,7 @@ local goto_bindings = {
 }
 
 local format_bindings = {
-    name = "Format ...",
+    name = "Format",
     a = {
         function()
             vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
@@ -53,9 +53,9 @@ local format_bindings = {
 }
 
 local toggle_bindings = {
-    name = "Toggle ...",
+    name = "Toggle",
     [keys.lsp] = {
-        name = "Toggle LSP ...",
+        name = "Toggle LSP",
         [keys.lsp_line] = {
             function()
                 local config = vim.diagnostic.config()
@@ -69,9 +69,9 @@ local toggle_bindings = {
 }
 
 local set_bindings = {
-    name = "Set ...",
+    name = "Set",
     [keys.lsp] = {
-        name = "Set LSP ...",
+        name = "LSP",
         [keys.lsp_line] = {
             function()
                 vim.diagnostic.config({
@@ -84,9 +84,9 @@ local set_bindings = {
 }
 
 local unset_bindings = {
-    name = "Unset ...",
+    name = "Unset",
     [keys.lsp] = {
-        name = "Unset LSP ...",
+        name = "LSP",
         [keys.lsp_line] = {
             function()
                 vim.diagnostic.config({
@@ -104,8 +104,7 @@ return function(client, bufnr)
 
     -- Prevent formatting capabilities, we have prettier and eslint anyway
     if client.name == 'tsserver' then
-        vim.b[extended_variables.telescope_file_ignore_patterns] = { '%.snap', '^node_modules' }
-        debug_flags.config_set('ignored .snap and node_modules')
+        ev.telescope_file_ignore_patterns.set_buffer("{ '%.snap', '^node_modules' }")
         client.resolved_capabilities.document_formatting = false
     end
 
