@@ -1,20 +1,5 @@
-local keys = require 'keys'
-
 return {
     'nvim-telescope/telescope.nvim',
-    keys = {
-        keys.leader .. keys.telescope .. 'r',
-        keys.leader .. keys.telescope .. 'ne',
-        keys.leader .. keys.telescope .. 'e',
-        keys.leader .. keys.telescope .. 't',
-        keys.leader .. keys.telescope .. 'f',
-        keys.leader .. keys.telescope .. 'p',
-        keys.leader .. keys.telescope .. 'h',
-        keys.leader .. keys.telescope .. 's',
-        keys.leader .. keys.telescope .. 'c',
-        keys.leader .. keys.telescope .. 'v',
-        keys.leader .. keys.vim .. 'h',
-    },
     dependencies = {
         'nvim-lua/plenary.nvim',
         'natecraddock/telescope-zf-native.nvim',

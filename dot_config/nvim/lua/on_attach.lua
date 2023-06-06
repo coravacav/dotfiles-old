@@ -45,7 +45,7 @@ local goto_bindings = {
 
 local format_bindings = {
     name = "Format ...",
-    [keys.buffer] = {
+    a = {
         function()
             vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
         end, "Format buffer"

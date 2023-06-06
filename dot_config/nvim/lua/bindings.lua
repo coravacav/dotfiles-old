@@ -34,7 +34,7 @@ local telescope_bindings = {
     p = { function() tb().commands(telescope_opts()) end, "Vim command palette" },
     h = { function() tb().help_tags(telescope_opts()) end, "Search help tags" },
     s = { function() tb().live_grep(telescope_opts()) end, "Search for string globally" },
-    c = { function() tb().git_status(telescope_opts()) end, "See all current git changes" },
+    [keys.git] = { function() tb().git_status(telescope_opts()) end, "See all current git changes" },
     v = { '<cmd>:Telescope file_browser path=%:p:h select_buffer=true<cr>', "Open the telescope file browser" },
 }
 
@@ -92,7 +92,8 @@ wk.register({
     [keys.toggle] = {
         name = "Toggle ...",
         ['\\'] = { '<cmd>ToggleTerm direction=float<cr>', 'Open floating terminal' },
-        [keys.trouble] = toggle_trouble_bindings
+        [keys.trouble] = toggle_trouble_bindings,
+        u = { '<cmd>:UndotreeToggle<cr>', "Toggle undotree" },
     }
 }, { prefix = keys.leader })
 
