@@ -1,15 +1,14 @@
 local wezterm = require 'wezterm'
 local config = {}
 
-local tmpname = require('os').tmpname()
-
-if string.sub(tmpname, 1, 1) == '\\' then
-    config.window_background_opacity = 0
-    config.win32_system_backdrop = 'Tabbed'
-else
-    config.window_background_opacity = 0.8
-    config.macos_window_background_blur = 30
-end
+-- local tmpname = require('os').tmpname()
+-- if string.sub(tmpname, 1, 1) == '\\' then
+--     config.window_background_opacity = 0
+--     config.win32_system_backdrop = 'Tabbed'
+-- else
+--     config.window_background_opacity = 0.8
+--     config.macos_window_background_blur = 30
+-- end
 
 config.color_scheme = 'tokyonight_moon'
 config.font = wezterm.font('IosevkaTerm Nerd Font Mono', { weight = 'DemiBold' })

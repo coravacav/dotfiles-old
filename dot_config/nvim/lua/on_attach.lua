@@ -125,6 +125,15 @@ return function(client, bufnr)
         end
     })
 
+    -- local ls = require("luasnip")
+    --
+    -- vim.api.nvim_create_autocmd("InsertLeave", {
+    --     callback = function()
+    --         ls.session.current_nodes[bufnr] = nil
+    --     end,
+    --     buffer = bufnr,
+    -- })
+
     wk.register({
             [keys.lsp] = lsp_bindings,
             [keys.goto] = goto_bindings,

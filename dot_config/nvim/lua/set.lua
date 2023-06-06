@@ -34,3 +34,5 @@ vim.opt.updatetime     = 69
 vim.opt.colorcolumn    = "120"
 vim.opt.completeopt    = 'menu,menuone,preview,noselect,noinsert'
 vim.opt.spelllang      = 'en_us'
+vim.opt.pumblend       = 20
+vim.opt.winblend       = 20
