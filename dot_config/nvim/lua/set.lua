@@ -34,5 +34,3 @@ vim.opt.updatetime     = 69
 vim.opt.colorcolumn    = "120"
 vim.opt.completeopt    = 'menu,menuone,preview,noselect,noinsert'
 vim.opt.spelllang      = 'en_us'
-
-vim.opt.isfname:append("@-@")

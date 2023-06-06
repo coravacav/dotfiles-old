@@ -1,6 +1,6 @@
--- I can't think of a great place to put this
-vim.g.loaded_netrw       = 1
-vim.g.loaded_netrwPlugin = 1
+-- I do this in lazy now, keeping around for reference
+-- vim.g.loaded_netrw       = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- pcall so on the offchance anything fails, don't ruin everything else
 pcall(require, "remap")
