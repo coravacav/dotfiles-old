@@ -32,6 +32,7 @@ local telescope_bindings = {
     s = { function() tb().live_grep(telescope_opts()) end, "Search for string globally" },
     [keys.git] = { function() tb().git_status(telescope_opts()) end, "See all current git changes" },
     v = { '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>', "Open the telescope file browser" },
+    u = { function() tb().resume() end, "Resume the last telescope search", }
 }
 
 local vim_bindings = {
