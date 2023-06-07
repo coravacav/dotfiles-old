@@ -3,10 +3,10 @@ local keys = require 'keys'
 vim.g.mapleader = " "
 
 -- remove the JHLK
-keys.keyset('Remove j', "n", "j", "<nop>")
-keys.keyset('Remove h', "n", "h", "<nop>")
-keys.keyset('Remove l', "n", "l", "<nop>")
-keys.keyset('Remove k', "n", "k", "<nop>")
+-- keys.keyset('Remove j', "n", "j", "<nop>")
+-- keys.keyset('Remove h', "n", "h", "<nop>")
+-- keys.keyset('Remove l', "n", "l", "<nop>")
+-- keys.keyset('Remove k', "n", "k", "<nop>")
 
 -- replace the normal window movement keys
 keys.keyset('Remove j window', "n", "<c-w>j", "<nop>")
