@@ -56,14 +56,19 @@ local toggle_bindings = {
     name = "Toggle",
     [keys.lsp] = {
         name = "Toggle LSP",
+        v = {
+            function()
+                vim.diagnostic.config({
+                    virtual_text = not vim.diagnostic.config().virtual_text,
+                })
+            end, "Toggle virtual_text"
+        },
         [keys.lsp_line] = {
             function()
-                local config = vim.diagnostic.config()
                 vim.diagnostic.config({
-                    virtual_text = not config.virtual_text,
-                    virtual_lines = not config.virtual_lines,
+                    virtual_lines = not vim.diagnostic.config().virtual_lines,
                 })
-            end, "Toggle LSP line diagnostics"
+            end, "Toggle lsp_line"
         }
     }
 }
