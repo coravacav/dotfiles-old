@@ -1,7 +1,6 @@
 ## NPM
-alias n='npm'
-alias ni='n i'
-alias nr='n run'
+alias ni='npm i'
+alias nr='npm run'
 
 ## PNPM
 alias p='pnpm'
@@ -39,13 +38,10 @@ function gb {
 
 alias prune_git_branches_merged_to_main='git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 
-alias c='code'
-alias cr='code -r'
-function zc {
-    z $1 && c . && cd -
-}
-function zcr {
-    z $1 && cr .
+alias n='nvim'
+alias nv='nvim'
+function zn {
+    z $1 && n
 }
 
 function gacmp {
@@ -64,4 +60,3 @@ alias mkdir='mkdir -p'
 
 alias srv='simple-http-server'
 
-alias nv='nvim'
