@@ -19,6 +19,7 @@ function pf {
 alias g='git'
 alias gm='g merge'
 alias gp='g pull'
+alias gps='g push'
 alias gd='g diff'
 alias gc='g checkout'
 alias gs='g status'
