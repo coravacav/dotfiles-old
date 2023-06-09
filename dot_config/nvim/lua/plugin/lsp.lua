@@ -19,9 +19,6 @@ return {
             -- Add more lua help for neovim
             { 'folke/neodev.nvim', },
 
-            -- Rust
-            { 'simrat39/rust-tools.nvim' },
-
             -- Copilot
             { 'github/copilot.vim', },
 
@@ -96,13 +93,25 @@ return {
                 },
             })
 
-            -- Rust
-            require 'rust-tools'.setup {
-                tools = {
-                    inlay_hints = {
-                        auto = false,
+            require 'lspconfig'.rust_analyzer.setup {
+                settings = {
+                    ['rust-analyzer'] = {
+                        diagnostics = {
+                            enable = true, -- do i ever want this to be false
+                        },
+                        cargo = {
+                            features = "all",
+                        },
+                        checkOnSave = true,
+                        check = {
+                            command = "clippy",
+                            allTargets = true,
+                            features = "all",
+                            invocationLocation = "workspace",
+                            extraArgs = { "--tests" },
+                        },
                     }
-                },
+                }
             }
 
             -- Typescript
