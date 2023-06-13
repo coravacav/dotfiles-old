@@ -1,13 +1,17 @@
 local wezterm = require 'wezterm'
 local config = {}
 
-local tmpname = require('os').tmpname()
-if string.sub(tmpname, 1, 1) == '\\' then
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+    config.default_prog = { 'pwsh' }
     config.window_background_opacity = 0
     config.win32_system_backdrop = 'Tabbed'
-else
+elseif 
+    wezterm.target_triple == 'aarch64-apple-darwin' or
+    wezterm.target_triple == 'x86_64-apple-darwin'
+then
     config.window_background_opacity = 0.8
     config.macos_window_background_blur = 30
+elseif wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
 end
 
 config.color_scheme = 'tokyonight_moon'
