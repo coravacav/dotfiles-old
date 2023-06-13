@@ -138,16 +138,16 @@ return {
                     null_ls.builtins.diagnostics.eslint_d.with({
                         extra_filetypes = { "svelte" },
                         prefer_local = "node_modules/.bin",
-                        -- condition = function(utils)
-                        --     local check = utils.root_has_file({
-                        --         ".eslintrc.js",
-                        --         ".eslintrc.cjs",
-                        --         ".eslintrc.yaml",
-                        --         ".eslintrc.yml",
-                        --         ".eslintrc.json",
-                        --     })
-                        --     return check
-                        -- end,
+                        condition = function(utils)
+                            local check = utils.root_has_file({
+                                ".eslintrc.js",
+                                ".eslintrc.cjs",
+                                ".eslintrc.yaml",
+                                ".eslintrc.yml",
+                                ".eslintrc.json",
+                            })
+                            return check
+                        end,
                     }),
                     require('typescript.extensions.null-ls.code-actions'),
                 },
