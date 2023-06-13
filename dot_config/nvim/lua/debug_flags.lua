@@ -18,7 +18,7 @@ M.lsp_on_format = should_debug(false)
 M.keyset_current_buffer = should_debug(false)
 M.keyset_global = should_debug(false)
 
-M.update_variable = should_debug(true)
+M.update_variable = should_debug(false)
 
 -- Boring boolean flags
 M.null_ls = false
