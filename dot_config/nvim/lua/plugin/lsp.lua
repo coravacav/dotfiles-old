@@ -128,7 +128,7 @@ return {
             null_ls.setup {
                 sources = {
                     null_ls.builtins.formatting.prettier.with({
-                        extra_filetypes = { "svelte" },
+                        extra_filetypes = { "svelte", "mdx" },
                         prefer_local = "node_modules/.bin",
                     }),
                     null_ls.builtins.formatting.eslint_d.with({
