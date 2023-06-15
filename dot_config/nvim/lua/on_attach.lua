@@ -2,7 +2,7 @@
 local ev = require 'extended_variables'
 local debug_flags = require 'debug_flags'
 local keys = require 'keys'
-local wk = require 'which-key'
+local onemap = require 'onemap'
 
 local lsp_bindings = {
     name = "LSP",
@@ -138,16 +138,7 @@ return function(client, bufnr)
     --     end,
     --     buffer = bufnr,
     -- })
+    --
 
-    wk.register({
-            [keys.lsp] = lsp_bindings,
-            [keys.goto] = goto_bindings,
-            [keys.format] = format_bindings,
-            [keys.toggle] = toggle_bindings,
-            [keys.set] = set_bindings,
-            [keys.unset] = unset_bindings,
-    }, {
-        buffer = bufnr,
-        prefix = keys.leader,
-    })
+    onemap.toggle('lsp', true)
 end
