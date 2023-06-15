@@ -77,7 +77,7 @@ keys.keyset('Remove history menu', "n", "Q", "<nop>")
 -- keys.keyset?
 
 -- <leader> s now replaces word under cursor
-keys.keyset('Replace word', "n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keys.keyset('Replace word', "n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Simpler redo
 keys.keyset('Redo', 'n', 'U', '<c-r>')
