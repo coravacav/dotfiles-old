@@ -3,8 +3,8 @@ local config = {}
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'wsl' }
-    -- config.window_background_opacity = 0
-    -- config.win32_system_backdrop = 'Tabbed'
+    config.window_background_opacity = 0.9
+    config.win32_system_backdrop = 'Acrylic'
 elseif
     wezterm.target_triple == 'aarch64-apple-darwin' or
     wezterm.target_triple == 'x86_64-apple-darwin'
@@ -15,7 +15,6 @@ elseif wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
 end
 
 config.color_scheme = 'tokyonight_moon'
-config.window_background_image = '~/.config/wezterm/bg.jpg'
 config.font = wezterm.font('IosevkaTerm Nerd Font Mono', { weight = 'DemiBold' })
 config.font_size = 24.0
 config.window_padding = {
