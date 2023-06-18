@@ -5,6 +5,7 @@ return {
     -- dir = '/Users/st/Documents/Programming/personal/onemap.nvim',
     opts = {
         groups = { 'lsp' },
-        buffer_local_groups = { 'lsp' }
+        buffer_local_groups = { 'lsp' },
+        whichkey_integration = true,
     },
 }

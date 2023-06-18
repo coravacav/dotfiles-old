@@ -222,15 +222,6 @@ onemap.register({
     }
 }, {
     prefix = keys.leader,
-    on_extra_info = function(context)
-        local current_path = context.current_path
-        local key = context.key
-        local value = context.value
-
-        if key == 'name' then
-            wk.register({ [current_path] = { name = value } })
-        end
-    end
 })
 
 -- {
