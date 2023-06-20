@@ -39,8 +39,6 @@ return {
             },
         }
 
-        -- https://phelipetls.github.io/posts/mdx-syntax-highlight-treesitter-nvim/
-        local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
-        ft_to_parser.mdx = "markdown"
+        vim.treesitter.language.register("markdown", "mdx")
     end
 }
