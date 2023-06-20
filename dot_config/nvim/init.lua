@@ -2,7 +2,6 @@
 -- vim.g.loaded_netrw       = 1
 -- vim.g.loaded_netrwPlugin = 1
 
--- pcall so on the offchance anything fails, don't ruin everything else
 local success, err
 success, err = pcall(require, "remap")
 if not success then

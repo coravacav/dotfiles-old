@@ -7,6 +7,12 @@ return {
         require("nvim-treesitter.install").update({ with_sync = true })
     end,
     config = function()
+        vim.filetype.add {
+            extension = {
+                mdx = 'mdx'
+            }
+        }
+
         require 'nvim-treesitter.configs'.setup {
             -- A list of parser names, or "all" (the five listed parsers should always be installed)
             -- ensure_installed = 'all',
@@ -32,5 +38,9 @@ return {
                 enable = true,
             },
         }
+
+        -- https://phelipetls.github.io/posts/mdx-syntax-highlight-treesitter-nvim/
+        local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
+        ft_to_parser.mdx = "markdown"
     end
 }
