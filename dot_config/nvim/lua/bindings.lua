@@ -24,6 +24,11 @@ end
 
 local telescope_bindings = {
     extra_name = "Telescope",
+    ne = { function() tb().find_files(telescope_opts {
+        hidden = true,
+        no_ignore = true,
+        no_ignore_parent = true
+    }) end, "File browser, no ignore" },
     e = { function() tb().find_files(telescope_opts()) end, "File search" },
     r = { function() tb().registers(telescope_opts()) end, "Register search" },
     t = { function() tb().treesitter(telescope_opts()) end, "Search treesitter symbols" },
@@ -223,15 +228,3 @@ onemap.register({
 }, {
     prefix = keys.leader,
 })
-
--- {
---     desc = "File search (incl hidden)",
---     Leader .. Project .. 'ne',
---     function()
---         require("telescope.builtin").find_files(telescope_opts {
---             hidden = true,
---             no_ignore = true,
---             no_ignore_parent = true
---         })
---     end,
--- },
