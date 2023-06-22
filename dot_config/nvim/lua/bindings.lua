@@ -4,7 +4,9 @@ local onemap = require 'onemap'
 local ev = require 'extended_variables'
 
 local telescope_opts = function(overrides)
-    local opts = {}
+    local opts = {
+        hidden = true
+    }
     opts = ev.telescope_file_ignore_patterns.get(opts)
     opts = ev.override(opts, overrides)
     return opts
