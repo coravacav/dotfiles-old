@@ -29,6 +29,8 @@ alias gac='ga . && git commit'
 alias gcm='g commit -m'
 alias gacm='ga . && gcm'
 alias grh='g reset --hard'
+alias gre='g restore'
+alias gres='g restore --staged'
 
 function gb {
     git for-each-ref \
