@@ -93,7 +93,7 @@ return {
                 },
             })
 
-            require 'lspconfig'.rust_analyzer.setup {
+            lsp.rust_analyzer.setup {
                 settings = {
                     ['rust-analyzer'] = {
                         diagnostics = {
@@ -119,7 +119,16 @@ return {
                 server = {
                     -- have to repass it
                     on_attach = on_attach,
+
                 }
+            }
+
+            lsp.svelte.setup {
+                on_attach = on_attach,
+            }
+
+            lsp.tailwindcss.setup {
+                on_attach = on_attach,
             }
 
             -- Setup linters
@@ -131,10 +140,10 @@ return {
                         extra_filetypes = { "svelte", "mdx" },
                         prefer_local = "node_modules/.bin",
                     }),
-                    null_ls.builtins.formatting.eslint_d.with({
-                        extra_filetypes = { "svelte" },
-                        prefer_local = "node_modules/.bin",
-                    }),
+                    -- null_ls.builtins.formatting.eslint_d.with({
+                    --     extra_filetypes = { "svelte" },
+                    --     prefer_local = "node_modules/.bin",
+                    -- }),
                     null_ls.builtins.diagnostics.eslint_d.with({
                         extra_filetypes = { "svelte" },
                         prefer_local = "node_modules/.bin",
