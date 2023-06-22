@@ -13,11 +13,16 @@ local telescope_opts = function(overrides)
 end
 
 local harpoon_bindings = {
-    extra_name = "Harpoon",
+    extra_wk_name = "Harpoon",
     a = { function() require("harpoon.mark").add_file() end, "Mark current file" },
     e = { function() require("harpoon.ui").toggle_quick_menu() end, "See harpoon menu" },
     [keys.next] = { function() require("harpoon.ui").nav_next() end, "Go to next harpoon file" },
     [keys.previous] = { function() require("harpoon.ui").nav_prev() end, "Go to prev harpoon file" },
+}
+
+local oil_bindings = {
+    extra_wk_name = "Oil",
+    o = { function() require("oil").toggle_float() end, "Open oil" },
 }
 
 local function tb()
@@ -25,7 +30,7 @@ local function tb()
 end
 
 local telescope_bindings = {
-    extra_name = "Telescope",
+    extra_wk_name = "Telescope",
     ne = { function() tb().find_files(telescope_opts {
         hidden = true,
         no_ignore = true,
@@ -44,24 +49,24 @@ local telescope_bindings = {
 }
 
 local vim_bindings = {
-    extra_name = "Vim",
+    extra_wk_name = "Vim",
     h = { '<cmd>Telescope notify<cr>', "Open the vim notify history" },
 }
 
 local tab_bindings = {
-    extra_name = "Tab",
+    extra_wk_name = "Tab",
     [keys.create] = { '<cmd>tabnew<cr>', "Create new tab" },
     [keys.next] = { '<cmd>tabnext<cr>', "Move to next tab" },
     [keys.previous] = { '<cmd>tabprevious<cr>', "Move to previous tab" },
     [keys.movement] = {
-        extra_name = "Move tab",
+        extra_wk_name = "Move tab",
         [keys.left] = { '<cmd>tabmove -<cr>', "Move tab to the left" },
         [keys.right] = { '<cmd>tabmove +<cr>', "Move tab to the right" },
     },
 }
 
 local toggle_trouble_bindings = {
-    extra_name = 'Trouble',
+    extra_wk_name = 'Trouble',
     [keys.close] = { '<cmd>TroubleClose<cr>', 'Close trouble' },
     [keys.buffer] = { '<cmd>TroubleToggle document_diagnostics<cr>', 'Toggle trouble buffer diagnostics' },
     [keys.workspace] = { '<cmd>TroubleToggle workspace_diagnostics<cr>', 'Toggle trouble workspace diagnostics' },
@@ -90,34 +95,34 @@ local toggle_trouble_bindings = {
 }
 
 local edit_bindings = {
-    extra_name = "Edit",
+    extra_wk_name = "Edit",
     [keys.global] = {
-        extra_name = "Edit global",
+        extra_wk_name = "Edit global",
         [keys.telescope] = {
-            extra_name = "Telescope",
+            extra_wk_name = "Telescope",
             [keys.ignore] = { ev.edit_global(ev.telescope_file_ignore_patterns), "Edit the global telescope ignore list" }
         }
     },
     [keys.buffer] = {
-        extra_name = "Edit buffer",
+        extra_wk_name = "Edit buffer",
         [keys.telescope] = {
-            extra_name = "Telescope",
+            extra_wk_name = "Telescope",
             [keys.ignore] = { ev.edit_buffer(ev.telescope_file_ignore_patterns), "Edit the buffer telescope ignore list" }
         }
     },
 }
 
 local lsp_bindings = {
-    extra_name = "LSP",
+    extra_wk_name = "LSP",
     a = { function()
             vim.lsp.buf.code_action()
         end, "Open code actions"},
 }
 
 local goto_bindings = {
-    extra_name = "Goto",
+    extra_wk_name = "Goto",
     [keys.symbol] = {
-        extra_name = "Goto symbol",
+        extra_wk_name = "Goto symbol",
         [keys.definitions] = { function()
             require('telescope.builtin').lsp_definitions()
         end, "Goto symbol definition"},
@@ -132,13 +137,13 @@ local goto_bindings = {
         end, "Goto symbol implementation"},
     },
     [keys.buffer] = {
-        extra_name = "Goto document (buffer)",
+        extra_wk_name = "Goto document (buffer)",
         [keys.symbol] = { function()
             require('telescope.builtin').lsp_document_symbols()
         end, "Goto document (buffer) symbols"},
     },
     [keys.workspace] = {
-        extra_name = "Goto workspace",
+        extra_wk_name = "Goto workspace",
         [keys.symbol] = { function()
             require('telescope.builtin').lsp_workspace_symbols()
             -- Possibly want require('telescope.builtin').lsp_dynamic_workspace_symbols()
@@ -147,7 +152,7 @@ local goto_bindings = {
 }
 
 local format_bindings = {
-    extra_name = "Format",
+    extra_wk_name = "Format",
     a = {
         function()
             vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
@@ -156,9 +161,9 @@ local format_bindings = {
 }
 
 local lsp_toggle_bindings = {
-    extra_name = "Toggle",
+    extra_wk_name = "Toggle",
     [keys.lsp] = {
-        extra_name = "Toggle LSP",
+        extra_wk_name = "Toggle LSP",
         v = {
             function()
                 vim.diagnostic.config({
@@ -177,7 +182,7 @@ local lsp_toggle_bindings = {
 }
 
 local toggle_bindings = {
-        extra_name = "Toggle",
+        extra_wk_name = "Toggle",
         ['\\'] = { '<cmd>ToggleTerm direction=float<cr>', 'Open floating terminal' },
         [keys.trouble] = toggle_trouble_bindings,
         u = { '<cmd>UndotreeToggle<cr>', "Toggle undotree" },
@@ -185,9 +190,8 @@ local toggle_bindings = {
 }
 
 local set_bindings = {
-    extra_name = "Set",
     [keys.lsp] = {
-        extra_name = "LSP",
+        extra_wk_name = "LSP",
         [keys.lsp_line] = {
             function()
                 vim.diagnostic.config({
@@ -200,9 +204,9 @@ local set_bindings = {
 }
 
 local unset_bindings = {
-    extra_name = "Unset",
+    extra_wk_name = "Unset",
     [keys.lsp] = {
-        extra_name = "LSP",
+        extra_wk_name = "LSP",
         [keys.lsp_line] = {
             function()
                 vim.diagnostic.config({
@@ -220,6 +224,7 @@ onemap.register({
     [keys.tab] = tab_bindings,
     [keys.toggle] = toggle_bindings,
     [keys.edit] = edit_bindings,
+    o = oil_bindings,
     __lsp = {
             [keys.lsp] = lsp_bindings,
             [keys.goto] = goto_bindings,
