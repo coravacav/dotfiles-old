@@ -18,9 +18,9 @@ if not success then
     vim.notify("Error loading set: " .. err, vim.log.levels.ERROR)
 end
 
-success, err = pcall(require, "bindings")
+success, err = pcall(require, "mappings")
 if not success then
-    vim.notify("Error loading bindings: " .. err, vim.log.levels.ERROR)
+    vim.notify("Error loading mappings: " .. err, vim.log.levels.ERROR)
 end
 
 local onemap = require 'onemap'
