@@ -1,0 +1,294 @@
+{
+    // ?
+    // ? Editor Changes
+    // ?
+    "editor.fontFamily": "Iosevka Custom Semibold, CodeNewRoman NF, Consolas, monospace",
+    "editor.fontLigatures": true,
+    "editor.cursorBlinking": "phase",
+    "editor.cursorStyle": "line-thin",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.wordWrap": "on",
+    "editor.cursorSurroundingLines": 5,
+    "editor.fontWeight": "100",
+    "editor.find.seedSearchStringFromSelection": "selection",
+    "explorer.confirmDelete": false,
+    "files.autoSave": "off",
+    "files.autoGuessEncoding": true,
+    "window.title": "${rootName}${separator}${dirty}${activeFolderMedium}/${activeEditorShort}${separator}${remoteName}",
+    "window.openFilesInNewWindow": "default",
+    "editor.minimap.maxColumn": 200,
+    "editor.minimap.showSlider": "always",
+    "editor.smoothScrolling": true,
+    "debug.console.closeOnEnd": true,
+    "files.hotExit": "onExitAndWindowClose",
+    "editor.quickSuggestions": {
+        "other": "inline",
+        "comments": "off",
+        "strings": "off"
+    },
+    "[tsx]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        }
+    },
+    "editor.suggest.insertMode": "insert",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "git.mergeEditor": true,
+    // ?
+    // ? Formatting
+    // ?
+    "editor.formatOnSave": true,
+    "[javascript][json][html][markdown][jsonc][typescript][typescriptreact][yaml][css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "javascript.format.semicolons": "insert",
+    "eslint.codeActionsOnSave.mode": "problems",
+    "[cpp][c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "C_Cpp.formatting": "clangFormat",
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+    // ?
+    // ? Explorer
+    // ?
+    "files.exclude": {
+        "**/.git": false
+    },
+    "search.exclude": {
+        "**/.git": true,
+        "**/dist": true,
+        "**/coverage": true,
+        "junit.xml": true,
+        "**/*.snap": true,
+        "**/.turbo": true,
+        "**/.yalc": true,
+        "**/package.json": false
+    },
+    "explorer.incrementalNaming": "smart",
+    "explorer.sortOrder": "type",
+    "workbench.enableExperiments": false,
+    "workbench.preferredDarkColorTheme": "Bearded Theme Black & Diamond",
+    "workbench.tree.indent": 12,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "search.actionsPosition": "right",
+    "search.quickOpen.includeSymbols": true,
+    "search.showLineNumbers": true,
+    "search.smartCase": true,
+    "search.sortOrder": "fileNames",
+    // ?
+    // ? Terminal
+    // ?
+    "terminal.integrated.scrollback": 10000000,
+    "terminal.integrated.fontSize": 13,
+    "terminal.explorerKind": "external",
+    "terminal.external.windowsExec": "wt.exe",
+    "terminal.integrated.fontWeight": "100",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.enablePersistentSessions": true,
+    "editor.suggestSelection": "first",
+    "explorer.confirmDragAndDrop": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "cmake.configureOnOpen": true,
+    "terminal.integrated.shellIntegration.history": 0,
+    // ?
+    // ? Theme
+    // ?
+    "peacock.favoriteColors": [
+        {
+            "name": "Angular Red",
+            "value": "#dd053120"
+        },
+        {
+            "name": "Azure Blue",
+            "value": "#007fff20"
+        },
+        {
+            "name": "JavaScript Yellow",
+            "value": "#f9e64f20"
+        },
+        {
+            "name": "Mandalorian Blue",
+            "value": "#1857a420"
+        },
+        {
+            "name": "Node Green",
+            "value": "#21573220"
+        },
+        {
+            "name": "React Blue",
+            "value": "#61dafb20"
+        },
+        {
+            "name": "Something Different",
+            "value": "#83256120"
+        },
+        {
+            "name": "Svelte Orange",
+            "value": "#ff3d0020"
+        },
+        {
+            "name": "Vue Green",
+            "value": "#42b88320"
+        }
+    ],
+    "peacock.affectSashHover": false,
+    "peacock.affectActivityBar": false,
+    "jest.jestCommandLine": "DEBUG_PRINT_LIMIT=100000 pnpm test --",
+    "javascript.validate.enable": false,
+    // ?
+    // ? Markdown
+    // ?
+    "markdown.preview.scrollPreviewWithEditor": false,
+    "markdown.preview.scrollEditorWithPreview": false,
+    "markdown.extension.tableFormatter.normalizeIndentation": true,
+    "markdown.extension.print.theme": "dark",
+    // ?
+    // ? Source control
+    // ?
+    "scm.alwaysShowActions": true,
+    "scm.autoReveal": false,
+    "scm.defaultViewMode": "tree",
+    "scm.diffDecorationsIgnoreTrimWhitespace": "true",
+    "gitlens.statusBar.enabled": false,
+    "gitlens.hovers.annotations.over": "annotation",
+    // ?
+    // ? Misc
+    // ?
+    "better-comments.highlightPlainText": true,
+    "remote.SSH.remotePlatform": {
+        "aws.stefanbt.com": "linux",
+        "xps": "linux",
+        "mask": "linux",
+        "lab1-8.eng.utah.edu": "linux",
+        "54.81.253.113": "linux",
+        "donde": "linux"
+    },
+    "problems.showCurrentInStatus": true,
+    "files.maxMemoryForLargeFilesMB": 14000,
+    "codesnap.showWindowControls": false,
+    "codesnap.shutterAction": "copy",
+    "codesnap.containerPadding": "3px",
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.copyRelativePathSeparator": "/",
+    "explorer.fileNesting.enabled": true,
+    "explorer.openEditors.sortOrder": "alphabetical",
+    "path-intellisense.autoTriggerNextSuggestion": true,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "workbench.localHistory.maxFileEntries": 0,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "npm.keybindingsChangedWarningShown": true,
+    "git.autofetch": "all",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#af2828",
+        "statusBar.noFolderBackground": "#af2828",
+        "statusBar.foreground": "#ffffff"
+    },
+    "markdown.validate.enabled": true,
+    "emmet.excludeLanguages": ["markdown", "mdx", "typescriptreact"],
+    "window.commandCenter": true,
+    "githubPullRequests.pullBranch": "never",
+    "notebook.lineNumbers": "on",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "right"
+    },
+    "editor.stickyScroll.enabled": true,
+    "path-intellisense.showHiddenFiles": true,
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "eslint.lintTask.enable": true,
+    "eslint.run": "onType",
+    "[mdx]": {
+        "editor.autoClosingBrackets": "beforeWhitespace",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "remote.SSH.useLocalServer": true,
+    "editor.accessibilitySupport": "off",
+    "jest.autoRun": {
+        "watch": false
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "debug.terminal.clearBeforeReusing": true,
+    "rust-analyzer.inlayHints.renderColons": false,
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "rust-analyzer.inlayHints.parameterHints.enable": false,
+    "files.associations": {
+        "*.jpl": "rust"
+    },
+    "resmon.show.battery": false,
+    "resmon.show.cpufreq": false,
+    "zenMode.fullScreen": false,
+    "zenMode.centerLayout": false,
+    "zenMode.hideLineNumbers": false,
+    "gitlens.showWelcomeOnInstall": false,
+    "workbench.editor.untitled.hint": "hidden",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "markdown-preview-github-styles.colorTheme": "dark",
+    "markdown-image.local.path": "images",
+    "cSpell.enableFiletypes": ["md"],
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "githubPullRequests.fileListLayout": "flat",
+    "cSpell.userWords": [
+        "Arrowkeys",
+        "Docgen",
+        "Liara",
+        "liveauctioneers",
+        "nohup",
+        "proxibid",
+        "spacebar",
+        "systemmmmm",
+        "tauri",
+        "testid",
+        "TLDR",
+        "tsup",
+        "typechecked"
+    ],
+    "cSpell.ignoreWords": ["JIKL", "compatability"],
+    "mdx.experimentalLanguageServer": true,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": ["-l", "-i"]
+        }
+    },
+    "eslint.format.enable": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": ["-l", "-i"]
+        }
+    },
+    "terminal.integrated.shellIntegration.suggestEnabled": true,
+    "window.menuBarVisibility": "toggle",
+    "rust-analyzer.inlayHints.chainingHints.enable": false,
+    "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+    "editor.cursorSurroundingLinesStyle": "all",
+    "editor.minimap.autohide": true,
+    "editor.minimap.renderCharacters": false,
+    "security.workspace.trust.banner": "never",
+    "csharp.suppressDotnetInstallWarning": true,
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false
+    },
+    "gitlens.plusFeatures.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "circleci.hostUrl": "",
+    "window.zoomLevel": 2
+}
+
