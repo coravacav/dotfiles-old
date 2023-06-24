@@ -66,9 +66,6 @@ keys.keyset('Delete no copy', "v", "<leader>d", "\"_d")
 -- if ctrl c does not save vertical edit mode?
 keys.keyset('Escape', "i", "<c-c>", "<esc>")
 
--- remove the godawful history menu?
-keys.keyset('Remove history menu', "n", "Q", "<nop>")
-
 -- ! do more research
 -- quickfix navigation?
 -- keys.keyset("n", "<c-k>)
