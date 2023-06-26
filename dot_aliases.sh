@@ -31,6 +31,7 @@ alias gacm='ga . && gcm'
 alias grh='g reset --hard'
 alias gre='g restore'
 alias gres='g restore --staged'
+alias gsyncmain='g checkout main && g pull && g checkout - && g merge main'
 
 function gb {
     git for-each-ref \
