@@ -52,10 +52,8 @@ return {
                 -- I do not always want all files
                 hidden = true,
 
-                -- Pretty
-                winblend = 20,
-
-
+                -- Annoying
+                winblend = 0,
 
                 -- Seeing the preview on top is nice, since I don't really need to see all the results
                 layout_strategy = 'vertical',

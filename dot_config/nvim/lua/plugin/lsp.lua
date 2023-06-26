@@ -119,7 +119,6 @@ return {
                 server = {
                     -- have to repass it
                     on_attach = on_attach,
-
                 }
             }
 
@@ -158,7 +157,6 @@ return {
                             return check
                         end,
                     }),
-                    require('typescript.extensions.null-ls.code-actions'),
                 },
                 on_attach = on_attach,
                 update_in_insert = true, -- Could have a performance implication
