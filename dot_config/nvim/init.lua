@@ -22,18 +22,3 @@ success, err = pcall(require, "mappings")
 if not success then
     vim.notify("Error loading mappings: " .. err, vim.log.levels.ERROR)
 end
-
-local onemap = require 'onemap'
-
-onemap.register {
-    ['<leader>mm'] = { function() end },
-    ['<leader>'] = { p = { p = { '<cmd>:lua vim.notify("hi")<cr>', 'notify for fun' } } },
-    ['<leader>p'] = {
-        z = { '<cmd>:lua vim.notify("gamer")<cr>', 'notify for fun' },
-        __lsp = {
-            b = {
-                '<cmd>:lua vim.notify("exclusivity")<cr>', 'notasdhf'
-            }
-        }
-    },
-}
