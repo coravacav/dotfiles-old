@@ -1,7 +1,7 @@
 # !/bin/zsh
 
 # Check if we have a working internet connection
-if ! ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+if ! ping -q -c 1 -W 1 github.com >/dev/null; then
   exit
 fi
 
