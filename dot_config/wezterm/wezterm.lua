@@ -14,9 +14,10 @@ then
 elseif wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
 end
 
-config.color_scheme = 'tokyonight_moon'
+config.color_scheme = 'Catppuccin Mocha'
 config.font = wezterm.font('IosevkaTerm Nerd Font Mono', { weight = 'DemiBold' })
 config.font_size = 24.0
+config.line_height = 0.9
 config.window_padding = {
     left = 8,
     right = 8,
