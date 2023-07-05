@@ -1,11 +1,10 @@
 local keys = require 'keys'
-local wk = require 'which-key'
 local onemap = require 'onemap'
 local ev = require 'extended_variables'
 
 local telescope_opts = function(overrides)
     local opts = {
-        hidden = true
+        hidden = true,
     }
     opts = ev.telescope_file_ignore_patterns.get(opts)
     opts = ev.override(opts, overrides)
@@ -221,7 +220,7 @@ onemap.register({
     [keys.harpoon] = harpoon_bindings,
     [keys.telescope] = telescope_bindings,
     [keys.vim] = vim_bindings,
-    [keys.tab] = tab_bindings,
+    ['<space>'] = tab_bindings,
     [keys.toggle] = toggle_bindings,
     [keys.edit] = edit_bindings,
     o = oil_bindings,

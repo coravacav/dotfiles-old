@@ -65,7 +65,7 @@ local try_parse = function(value)
 end
 
 
-local create_setting = function(variable_key, setting_key)
+local create_setting = function(variable_key, setting_key, default_value)
     local setting = {}
     setting.key = setting_key
     setting.variable = variable_key
@@ -108,12 +108,17 @@ local create_setting = function(variable_key, setting_key)
         end
     end
 
+    if default_value then
+        vim.g[setting.raw] = vim.inspect(default_value)
+        vim.g[setting_key] = default_value
+    end
+
     return setting
 end
 
 -- I'm pretty sure nobody else will use this for their variables
 local prefix = 'conflict_fr33_'
 
-M.telescope_file_ignore_patterns = create_setting('file_ignore_patterns', prefix .. 'fip')
+M.telescope_file_ignore_patterns = create_setting('file_ignore_patterns', prefix .. 'fip', { '.git' })
 
 return M

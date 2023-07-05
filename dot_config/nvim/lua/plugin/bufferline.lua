@@ -7,6 +7,7 @@ return {
             separator_style = 'slant',
             always_show_bufferline = true,
             diagnostics = 'nvim_lsp',
+            mode = 'tabs'
         },
     }
 }
