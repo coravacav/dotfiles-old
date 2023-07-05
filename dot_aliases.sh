@@ -33,6 +33,10 @@ alias gre='g restore'
 alias gres='g restore --staged'
 alias gsyncmain='g checkout main && g pull && g checkout - && g merge main'
 
+alias cs='chezmoi status'
+alias cra='chezmoi re-add'
+alias ccd='chezmoi cd'
+
 function gb {
     git for-each-ref \
         --sort=-committerdate \
