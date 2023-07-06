@@ -14,8 +14,7 @@ local config = {}
 -- elseif wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
 -- end
 
-wezterm.log_error('Home ' .. wezterm.home_dir)
-config.window_background_image = '~/.config/wezterm/bg.jpg'
+config.window_background_image = wezterm.home_dir .. '/.config/wezterm/bg.jpg'
 
 config.color_scheme = 'tokyonight_moon'
 config.font = wezterm.font('IosevkaTerm Nerd Font Mono', { weight = 'DemiBold' })
