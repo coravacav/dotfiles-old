@@ -27,7 +27,7 @@ config.background = {
         source = {
             Gradient = {
                 colors = {
-                    "#641a80", "#8c2981", "#b63679"
+                    "#641a80", "#8c2981", "#b63679", "#641a80", "#8c2981"
                 },
                 orientation = { Radial = { radius = 1 } },
             }
