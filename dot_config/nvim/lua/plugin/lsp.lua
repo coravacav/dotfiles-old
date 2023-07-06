@@ -153,6 +153,7 @@ return {
                                 ".eslintrc.yaml",
                                 ".eslintrc.yml",
                                 ".eslintrc.json",
+                                ".eslintignore",
                             })
                             return check
                         end,
