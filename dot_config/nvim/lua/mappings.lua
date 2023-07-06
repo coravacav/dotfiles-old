@@ -64,7 +64,7 @@ local tab_bindings = {
     },
 }
 
-local toggle_trouble_bindings = {
+local trouble_bindings = {
     extra_wk_name = 'Trouble',
     [keys.close] = { '<cmd>TroubleClose<cr>', 'Close trouble' },
     [keys.buffer] = { '<cmd>TroubleToggle document_diagnostics<cr>', 'Toggle trouble buffer diagnostics' },
@@ -74,23 +74,23 @@ local toggle_trouble_bindings = {
     [keys.type_definitions] = { '<cmd>TroubleToggle lsp_type_definitions<cr>', 'Toggle trouble LSP type definitions' },
     [keys.quickfixes] = { '<cmd>TroubleToggle quickfix<cr>', 'Toggle trouble quickfixes' },
     l = { '<cmd>TroubleToggle loclist<cr>', 'Toggle trouble loclist' },
-    -- These should not be in "toggle"
-    -- [keys.next] = {
-    --     function()
-    --         require("trouble").next({ skip_groups = true, jump = true })
-    --     end, 'Go to next trouble item, skipping the groups' },
-    -- [keys.previous] = {
-    --     function()
-    --         require("trouble").previous({ skip_groups = true, jump = true })
-    --     end, 'Go to previous trouble item, skipping the groups' },
-    -- [keys.first] = {
-    --     function()
-    --         require("trouble").first({ skip_groups = true, jump = true })
-    --     end, 'Go to first trouble item, skipping the groups' },
-    -- [keys.last] = {
-    --     function()
-    --         require("trouble").last({ skip_groups = true, jump = true })
-    --     end, 'Go to last trouble item, skipping the groups' },
+    [keys.next] = {
+        function()
+            require("trouble").next({ skip_groups = true, jump = true })
+        end, 'Go to next trouble item, skipping the groups' },
+    [keys.previous] = {
+        function()
+            require("trouble").previous({ skip_groups = true, jump = true })
+        end, 'Go to previous trouble item, skipping the groups' },
+    [keys.first] = {
+        function()
+            require("trouble").first({ skip_groups = true, jump = true })
+        end, 'Go to first trouble item, skipping the groups' },
+    [keys.last] = {
+        function()
+            require("trouble").last({ skip_groups = true, jump = true })
+        end, 'Go to last trouble item, skipping the groups' },
+    k = { '<cmd>Trouble<cr>', 'Open trouble' },
 }
 
 local edit_bindings = {
@@ -159,33 +159,29 @@ local format_bindings = {
     }
 }
 
-local lsp_toggle_bindings = {
-    extra_wk_name = "Toggle",
-    [keys.lsp] = {
-        extra_wk_name = "Toggle LSP",
-        v = {
-            function()
-                vim.diagnostic.config({
-                    virtual_text = not vim.diagnostic.config().virtual_text,
-                })
-            end, "Toggle virtual_text"
-        },
-        [keys.lsp_line] = {
-            function()
-                vim.diagnostic.config({
-                    virtual_lines = not vim.diagnostic.config().virtual_lines,
-                })
-            end, "Toggle lsp_line"
-        }
-    }
-}
-
 local toggle_bindings = {
-        extra_wk_name = "Toggle",
-        ['\\'] = { '<cmd>ToggleTerm direction=float<cr>', 'Open floating terminal' },
-        [keys.trouble] = toggle_trouble_bindings,
-        u = { '<cmd>UndotreeToggle<cr>', "Toggle undotree" },
-        __lsp = lsp_toggle_bindings,
+    extra_wk_name = "Toggle",
+    ['\\'] = { '<cmd>ToggleTerm direction=float<cr>', 'Open floating terminal' },
+    u = { '<cmd>UndotreeToggle<cr>', "Toggle undotree" },
+    __lsp ={
+        [keys.lsp] = {
+            extra_wk_name = "Toggle LSP",
+            v = {
+                function()
+                    vim.diagnostic.config({
+                        virtual_text = not vim.diagnostic.config().virtual_text,
+                    })
+                end, "Toggle virtual_text"
+            },
+            [keys.lsp_line] = {
+                function()
+                    vim.diagnostic.config({
+                        virtual_lines = not vim.diagnostic.config().virtual_lines,
+                    })
+                end, "Toggle lsp_line"
+            }
+        }
+    },
 }
 
 local set_bindings = {
@@ -223,6 +219,7 @@ onemap.register({
     ['<space>'] = tab_bindings,
     [keys.toggle] = toggle_bindings,
     [keys.edit] = edit_bindings,
+    k = trouble_bindings,
     o = oil_bindings,
     __lsp = {
             [keys.lsp] = lsp_bindings,
