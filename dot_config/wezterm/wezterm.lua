@@ -15,38 +15,38 @@ local config = {}
 -- end
 
 config.background = {
-		{
-				source = {
-						Color = "#222222"
-				},
-				width = "100%",
-				height = "100%",
-				opacity = 0.97
-		},
-		{
-				source = {
-						Gradient = { 
-								colors = {
- "#641a80", "#8c2981", "#b63679", "#de4968", "#f66f5c", "#fe9f6d", "#fece91", "#fcfdbf"
-								},
-								orientation = { Radial = { radius = 1 } },
-						} 
-				},
-				width = "100%",
-				height = "100%",
-				opacity = 0.3
-		},
-		{
-				source = {
-						Gradient = { 
-								colors = {'#000000', '#000000'},
-								orientation = { Radial = { radius = 3.5 } },
-						} 
-				},
-				width = "100%",
-				height = "100%",
-				opacity = 0.05
-		},
+    {
+        source = {
+            Color = "#222222"
+        },
+        width = "100%",
+        height = "100%",
+        opacity = 0.97
+    },
+    {
+        source = {
+            Gradient = {
+                colors = {
+                    "#641a80", "#8c2981", "#b63679", "#de4968", "#f66f5c", "#fe9f6d", "#fece91", "#fcfdbf"
+                },
+                orientation = { Radial = { radius = 1 } },
+            }
+        },
+        width = "100%",
+        height = "100%",
+        opacity = 0.3
+    },
+    {
+        source = {
+            Gradient = {
+                colors = { '#000000', '#000000' },
+                orientation = { Radial = { radius = 3.5 } },
+            }
+        },
+        width = "100%",
+        height = "100%",
+        opacity = 0.05
+    },
 }
 
 config.color_scheme = 'tokyonight_moon'
