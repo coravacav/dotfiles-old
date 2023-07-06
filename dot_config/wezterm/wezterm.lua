@@ -18,7 +18,9 @@ config.background = {
     {
         source = {
             File = wezterm.home_dir .. '/.config/wezterm/blurred.jpg'
-        }
+        },
+        vertical_align = 'Center',
+        horizontal_align = 'Center',
     }
 }
 
