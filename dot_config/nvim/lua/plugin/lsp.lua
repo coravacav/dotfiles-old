@@ -71,7 +71,7 @@ return {
                     'bash-language-server',
                     'json-lsp',
                     'html-lsp',
-                    'prettier',
+                    'prettierd',
                 },
                 auto_update = false,
                 run_on_start = true,
@@ -135,9 +135,8 @@ return {
 
             null_ls.setup {
                 sources = {
-                    null_ls.builtins.formatting.prettier.with({
+                    null_ls.builtins.formatting.prettierd.with({
                         extra_filetypes = { "svelte", "mdx" },
-                        prefer_local = "node_modules/.bin",
                     }),
                     -- null_ls.builtins.formatting.eslint_d.with({
                     --     extra_filetypes = { "svelte" },
@@ -145,7 +144,6 @@ return {
                     -- }),
                     null_ls.builtins.diagnostics.eslint_d.with({
                         extra_filetypes = { "svelte" },
-                        prefer_local = "node_modules/.bin",
                         condition = function(utils)
                             local check = utils.root_has_file({
                                 ".eslintrc.js",
