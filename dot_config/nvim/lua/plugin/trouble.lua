@@ -2,7 +2,7 @@ local keys = require 'keys'
 
 return {
     "folke/trouble.nvim",
-    dependencies = {"nvim-tree/nvim-web-devicons"},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         keys.leader .. keys.toggle .. keys.trouble .. keys.close,
         keys.leader .. keys.toggle .. keys.trouble .. keys.buffer,
