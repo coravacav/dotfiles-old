@@ -119,6 +119,6 @@ end
 -- I'm pretty sure nobody else will use this for their variables
 local prefix = 'conflict_fr33_'
 
-M.telescope_file_ignore_patterns = create_setting('file_ignore_patterns', prefix .. 'fip', { '.git' })
+M.telescope_file_ignore_patterns = create_setting('file_ignore_patterns', prefix .. 'fip', { '.git', 'node_modules' })
 
 return M
