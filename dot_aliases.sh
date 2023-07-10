@@ -69,3 +69,6 @@ alias mkdir='mkdir -p'
 alias srv='simple-http-server'
 
 alias cl='clear'
+
+alias c='code'
+alias cr='code -r'
