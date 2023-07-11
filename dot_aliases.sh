@@ -72,3 +72,5 @@ alias cl='clear'
 
 alias c='code'
 alias cr='code -r'
+
+alias cdt='cd $(git rev-parse --show-toplevel)'
