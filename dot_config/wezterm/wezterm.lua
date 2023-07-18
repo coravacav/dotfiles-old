@@ -3,8 +3,8 @@ local config = {}
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'wsl' }
-    -- config.window_background_opacity = 0.9
-    -- config.win32_system_backdrop = 'Acrylic'
+    config.window_background_opacity = 0.9
+    config.win32_system_backdrop = 'Tabbed'
 elseif
     wezterm.target_triple == 'aarch64-apple-darwin' or
     wezterm.target_triple == 'x86_64-apple-darwin'
@@ -14,40 +14,40 @@ then
 elseif wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
 end
 
-config.background = {
-    {
-        source = {
-            Color = "#222222"
-        },
-        width = "100%",
-        height = "100%",
-        opacity = 0.97
-    },
-    {
-        source = {
-            Gradient = {
-                colors = {
-                    "#641a80", "#8c2981", "#b63679", "#641a80", "#8c2981"
-                },
-                orientation = { Radial = { radius = 1 } },
-            }
-        },
-        width = "100%",
-        height = "100%",
-        opacity = 0.3
-    },
-    {
-        source = {
-            Gradient = {
-                colors = { '#000000', '#000000' },
-                orientation = { Radial = { radius = 3.5 } },
-            }
-        },
-        width = "100%",
-        height = "100%",
-        opacity = 0.05
-    },
-}
+-- config.background = {
+--     {
+--         source = {
+--             Color = "#222222"
+--         },
+--         width = "100%",
+--         height = "100%",
+--         opacity = 0.97
+--     },
+--     {
+--         source = {
+--             Gradient = {
+--                 colors = {
+--                     "#641a80", "#8c2981", "#b63679", "#641a80", "#8c2981"
+--                 },
+--                 orientation = { Radial = { radius = 1 } },
+--             }
+--         },
+--         width = "100%",
+--         height = "100%",
+--         opacity = 0.3
+--     },
+--     {
+--         source = {
+--             Gradient = {
+--                 colors = { '#000000', '#000000' },
+--                 orientation = { Radial = { radius = 3.5 } },
+--             }
+--         },
+--         width = "100%",
+--         height = "100%",
+--         opacity = 0.05
+--     },
+-- }
 
 config.color_scheme = 'tokyonight_moon'
 config.font = wezterm.font('IosevkaTerm Nerd Font Mono', { weight = 'DemiBold' })
