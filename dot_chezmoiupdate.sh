@@ -2,10 +2,10 @@
 
 # Check if we have a working internet connection
 if ! ping -q -c 1 -W 1 github.com >/dev/null; then
-  exit
+    exit
 fi
 
-chezmoi update > /dev/null 2>&1
+chezmoi update >/dev/null 2>&1
 
 # if chezmoi exited with 0, exit this script
 if [ $? -eq 0 ]; then
@@ -31,4 +31,4 @@ for dir in $PROBLEM_DIRS; do
     mv $dir /tmp
 done
 
-chezmoi update > /dev/null 2>&1
+chezmoi update >/dev/null 2>&1
