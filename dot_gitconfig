@@ -1,0 +1,9 @@
+[user]
+	email = stefan.b.todorov@gmail.com
+	name = Stefan Todorov
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+	autoSetupRemote = true
+	autoSetupRemote = true
