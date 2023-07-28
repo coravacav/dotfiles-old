@@ -1,9 +1,53 @@
 [user]
-	email = stefan.b.todorov@gmail.com
-	name = Stefan Todorov
+email = stefan.b.todorov@gmail.com
+name = Stefan Todorov
 [init]
-	defaultBranch = main
+defaultBranch = main
 [push]
-	autoSetupRemote = true
-	autoSetupRemote = true
-	autoSetupRemote = true
+autoSetupRemote = true
+[pager]
+diff = riff
+show = riff
+log = riff
+[interactive]
+diffFilter = riff
+[alias]
+
+d = diff
+s = status
+m = merge
+w = switch
+a = add
+p = pull
+ps = push
+
+# checkout
+co = checkout
+cob = checkout -b
+
+# branch
+b = branch
+br = !git for-each-ref \
+	--sort=-committerdate \
+	refs/heads/ \
+	--format='%(HEAD) %(align:45)%(color:yellow)%(refname:short)%(color:reset)%(end) %(color:red)%(objectname:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(contents:subject)'
+del = branch -D
+
+# commit
+c = commit
+ca = commit --amend
+cam = commit --amend -m
+cm = commit -m
+ac = !git add . && git commit
+acm = !git add . && git commit -m
+
+# log
+l = log --graph --oneline --decorate --all
+
+# reset
+undo = reset HEAD~1 --mixed
+rh = reset --hard
+
+# restore
+re = restore
+res = restore --staged

@@ -17,34 +17,18 @@ function pf {
 }
 
 alias g='git'
-alias gm='g merge'
-alias gp='g pull'
-alias gps='g push'
-alias gd='g diff'
-alias gc='g checkout'
-alias gs='g status'
-alias gch='gc HEAD --'
-alias ga='g add'
-alias gcb='g checkout -b'
-alias gw='g switch'
-alias gac='ga . && git commit'
-alias gcm='g commit -m'
-alias gacm='ga . && gcm'
-alias grh='g reset --hard'
-alias gre='g restore'
-alias gres='g restore --staged'
-alias gsyncmain='g checkout main && g pull && g checkout - && g merge main'
+
+function gacmp {
+    g a . && g cm $1 && g push
+}
+
+function gcmp {
+    g cm $1 && g push
+}
 
 alias cs='chezmoi status'
 alias cra='chezmoi re-add'
 alias ccd='chezmoi cd'
-
-function gb {
-    git for-each-ref \
-        --sort=-committerdate \
-        refs/heads/ \
-        --format='%(HEAD) %(align:45)%(color:yellow)%(refname:short)%(color:reset)%(end) %(color:red)%(objectname:short)%(color:reset) %(contents:subject)'
-}
 
 alias prune_git_branches_merged_to_main='git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 
@@ -52,14 +36,6 @@ alias n='nvim'
 alias nv='nvim'
 function zn {
     z $1 && n
-}
-
-function gacmp {
-    ga . && gcm $1 && g push
-}
-
-function gcmp {
-    gcm $1 && g push
 }
 
 alias pchgacmp='pch && gacmp'
