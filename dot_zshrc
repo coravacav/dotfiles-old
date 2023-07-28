@@ -1,6 +1,10 @@
 # Only run in interactive mode.
 [[ $- != *i* ]] && return
 
+source ~/.aliases.sh
+
+#region opts
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000000
@@ -17,6 +21,10 @@ unsetopt autocd beep extendedglob nomatch
 # Add my fun ctrl +a, etc. (emacs bindings)
 bindkey -e
 
+# arrowkey + direction
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/mask/.zshrc'
@@ -29,52 +37,40 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source ~/.aliases.sh
+#endregion
 
-# pnpm
+#region ENV
+
+#region pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+#endregion
 
-# zoxide jumpin
-eval "$(zoxide init zsh)"
-
-# prompt
-eval "$(starship init zsh)"
-
-# arrowkey + direction
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-
-# HUI specific fixes
-while [[ $(pwd) = /_/**/hammer-ui/* ]]; do
-    echo automatically moving from $(pwd) to $(dirname $(pwd))
-    cd ..
-done
-
-# bun completions
-[ -s "/home/mask/.bun/_bun" ] && source "/home/mask/.bun/_bun"
-
-# bun
+#region bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+#endregion
 
-# Add node
-eval "$(fnm env --use-on-cd)"
-
-# bun completions
-[ -s "/Users/st/.bun/_bun" ] && source "/Users/st/.bun/_bun"
-
-# qmk
+#region qmk
 export PATH="$HOME/.local/bin:$PATH"
+#endregion
 
-# deno
+#region deno
 export DENO_INSTALL="/home/mask/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-
-# update chezmoi
-zsh -c 'zsh ~/.chezmoiupdate.sh &'
+#endregion
 
 # use nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+#endregion
+
+#region program configs
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+eval "$(fnm env --use-on-cd)"
+#endregion
+
+# update chezmoi
+zsh -c 'zsh ~/.chezmoiupdate.sh &'

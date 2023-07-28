@@ -52,3 +52,5 @@ alias c='code'
 alias cr='code -r'
 
 alias cdp='cd $(git rev-parse --show-toplevel)'
+
+alias fcd='cd $(fd -t d | fzf)'
