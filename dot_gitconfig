@@ -15,11 +15,14 @@ diffFilter = riff
 
 d = diff
 s = status
-m = merge
 w = switch
 a = add
 p = pull
 ps = push
+
+# merge
+m = merge
+mc = merge --continue
 
 # checkout
 c = checkout
