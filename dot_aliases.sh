@@ -38,6 +38,14 @@ function zn {
     z $1 && n
 }
 
+function zc {
+    z $1 && code . && cd -
+}
+
+function zcr {
+    z $1 && code -r .
+}
+
 alias pchgacmp='pch && gacmp'
 
 alias ls='exa --icons -a'
