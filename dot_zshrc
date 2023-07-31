@@ -74,3 +74,9 @@ eval "$(fnm env --use-on-cd)"
 
 # update chezmoi
 zsh -c 'zsh ~/.chezmoiupdate.sh &'
+
+# git aliases
+if ! type "git-alias-aliaser" >/dev/null; then
+    cargo install --path ~/shell-utils/git-alias-aliaser
+fi
+eval "$(git-alias-aliaser)"
