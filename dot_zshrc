@@ -70,7 +70,6 @@ export EDITOR="$VISUAL"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
-$(brew --prefix)/opt/fzf/install
 #endregion
 
 # update chezmoi
