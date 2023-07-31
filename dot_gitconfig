@@ -22,8 +22,8 @@ p = pull
 ps = push
 
 # checkout
-co = checkout
-cob = checkout -b
+c = checkout
+cb = checkout -b
 
 # branch
 b = branch
@@ -34,7 +34,6 @@ br = !git for-each-ref \
 del = branch -D
 
 # commit
-c = commit
 ca = commit --amend
 cam = commit --amend -m
 cm = commit -m
