@@ -16,6 +16,13 @@ function pf {
     p --filter "*"$FILTER"*" $@
 }
 
+function pft {
+    FILTER=$1
+    shift
+    p --filter "*"$FILTER"*" test -- $@
+}
+
+#region Git / Github
 alias g='git'
 
 function gacmp {
@@ -25,6 +32,13 @@ function gacmp {
 function gcmp {
     g cm $1 && g push
 }
+
+alias gpr='gh pr'
+alias gprl='gh pr list'
+alias gprc='gh pr checkout'
+alias gprv='gh pr view'
+alias gprvw='gh pr view -w'
+#endregion
 
 alias cs='chezmoi status'
 alias cra='chezmoi re-add'
