@@ -82,4 +82,4 @@ fi
 eval "$(git-alias-aliaser)"
 
 # bun completions
-[ -s "/Users/st/.bun/_bun" ] && source "/Users/st/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
