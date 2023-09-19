@@ -31,7 +31,7 @@ cb = checkout -b
 # branch
 b = branch
 br = !git for-each-ref \
-	--sort=-committerdate \
+	--sort=committerdate \
 	refs/heads/ \
 	--format='%(HEAD) %(align:45)%(color:yellow)%(refname:short)%(color:reset)%(end) %(color:red)%(objectname:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(contents:subject)'
 del = branch -D
