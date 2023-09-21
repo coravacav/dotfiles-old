@@ -60,6 +60,10 @@ export DENO_INSTALL="/home/mask/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 #endregion
 
+#region doom emacs
+export PATH="$HOME/.emacs.d/bin:$PATH"
+#endregion
+
 # use nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
