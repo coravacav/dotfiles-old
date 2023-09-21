@@ -61,7 +61,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 #endregion
 
 #region doom emacs
-export PATH="$HOME/.emacs.d/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
 #endregion
 
 # use nvim
