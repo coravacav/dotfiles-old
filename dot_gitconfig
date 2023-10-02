@@ -34,7 +34,7 @@ br = !git for-each-ref \
 	--sort=committerdate \
 	refs/heads/ \
 	--format='%(HEAD) %(align:45)%(color:yellow)%(refname:short)%(color:reset)%(end) %(color:red)%(objectname:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(contents:subject)'
-del = branch -D
+del = branch -d
 
 # commit
 ca = commit --amend
