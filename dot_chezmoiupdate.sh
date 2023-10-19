@@ -18,17 +18,17 @@ if [ -n "$(chezmoi status)" ]; then
     exit
 fi
 
-# list containing problem directories
-PROBLEM_DIRS=(
-    ~/.config/nvim
-)
+# # list containing problem directories
+# PROBLEM_DIRS=(
+#     ~/.config/nvim
+# )
 
-# delete all files in problem directories
-for dir in $PROBLEM_DIRS; do
-    echo -en "Deleting $dir\n❯ "
+# # delete all files in problem directories
+# for dir in $PROBLEM_DIRS; do
+#     echo -en "Deleting $dir\n❯ "
 
-    # backup directory to tmp
-    mv $dir /tmp
-done
+#     # backup directory to tmp
+#     mv $dir /tmp
+# done
 
-chezmoi update >/dev/null 2>&1
+# chezmoi update >/dev/null 2>&1
