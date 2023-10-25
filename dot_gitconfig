@@ -19,7 +19,7 @@ w = switch
 a = add
 p = pull
 pu = push
-puo = push --set-upstream origin
+puo = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
 
 # merge
 m = merge
