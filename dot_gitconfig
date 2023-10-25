@@ -18,7 +18,8 @@ s = status
 w = switch
 a = add
 p = pull
-ps = push
+pu = push
+puo = push --set-upstream origin
 
 # merge
 m = merge
