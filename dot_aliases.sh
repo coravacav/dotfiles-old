@@ -62,8 +62,8 @@ function zcr {
 
 alias pchgacmp='pch && gacmp'
 
-alias ls='exa --icons -a'
-alias ll='exa --icons -lag --header'
+alias ls='eza --icons -a'
+alias ll='eza --icons -lag --header'
 alias mkdir='mkdir -p'
 
 alias srv='simple-http-server'
