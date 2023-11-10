@@ -13,6 +13,11 @@ then
     -- config.macos_window_background_blur = 30
 elseif wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
 end
+-- {
+--     key = 'w',
+--     mods = 'CMD',
+--     action = wezterm.action.CloseCurrentTab { confirm = true },
+-- },
 
 -- config.background = {
 --     {
@@ -74,5 +79,7 @@ config.mouse_bindings = {
         action = wezterm.action.StartWindowDrag,
     },
 }
+config.window_close_confirmation = 'NeverPrompt'
+
 
 return config
