@@ -87,3 +87,9 @@ eval "$(git-alias-aliaser)"
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# GoLang
+export GOROOT=/home/wrxl/.go
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=/home/wrxl/go
+export PATH=$GOPATH/bin:$PATH
