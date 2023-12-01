@@ -89,7 +89,7 @@ eval "$(git-alias-aliaser)"
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # GoLang
-export GOROOT=/home/wrxl/.go
+export GOROOT=$HOME/.go
 export PATH=$GOROOT/bin:$PATH
-export GOPATH=/home/wrxl/go
+export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
