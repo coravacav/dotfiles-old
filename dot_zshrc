@@ -93,3 +93,6 @@ export GOROOT=$HOME/.go
 export PATH=$GOROOT/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+# Onyx config
+export ONYX_PATH="/Users/st/.onyx"
+export PATH="$ONYX_PATH/bin:$PATH"
