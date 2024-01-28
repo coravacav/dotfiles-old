@@ -76,4 +76,4 @@ alias cdp='cd $(git rev-parse --show-toplevel)'
 alias fcd='cd $(fd -t d | fzf)'
 
 alias bench_ts='pnpm exec tsc --generateTrace traceDir && pnpm dlx @typescript/analyze-trace traceDir'
-alias c4='cargo check && cargo clippy'
+alias cc='cargo clippy'
