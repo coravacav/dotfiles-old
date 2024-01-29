@@ -55,8 +55,8 @@ end
 -- }
 
 config.color_scheme = 'tokyonight_moon'
-config.font = wezterm.font('IosevkaTerm Nerd Font Mono', { weight = 'DemiBold' })
-config.font_size = 20.0
+config.font = wezterm.font('MonaspiceNe Nerd Font Mono', { weight = 'Regular' })
+config.font_size = 16.0
 config.window_padding = {
     left = 8,
     right = 8,
