@@ -11,6 +11,13 @@ show = riff
 log = riff
 [interactive]
 diffFilter = riff
+[color]
+diff = auto
+status = auto
+branch = auto
+interactive = auto
+ui = auto
+pager = true
 [alias]
 
 d = diff
@@ -32,9 +39,9 @@ cb = checkout -b
 # branch
 b = branch
 br = !git for-each-ref \
-	--sort=committerdate \
-	refs/heads/ \
-	--format='%(HEAD) %(align:45)%(color:yellow)%(refname:short)%(color:reset)%(end) %(color:red)%(objectname:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(contents:subject)'
+    --sort=committerdate \
+    refs/heads/ \
+    --format='%(HEAD) %(align:45)%(color:yellow)%(refname:short)%(color:reset)%(end) %(color:red)%(objectname:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(contents:subject)'
 del = branch -d
 
 # commit
@@ -45,7 +52,8 @@ ac = !git add . && git commit
 acm = !git add . && git commit -m
 
 # log
-l = log --graph --oneline --decorate --all
+lg = log --graph --oneline --decorate --all
+l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 # reset
 undo = reset HEAD~1 --mixed
@@ -55,7 +63,7 @@ rh = reset --hard
 re = restore
 res = restore --staged
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
