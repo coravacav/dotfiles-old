@@ -65,7 +65,7 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 #endregion
 
 #region brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 #endregion
 
 # use nvim
@@ -100,4 +100,3 @@ export PATH=$GOPATH/bin:$PATH
 # Onyx config
 export ONYX_PATH="/Users/st/.onyx"
 export PATH="$ONYX_PATH/bin:$PATH"
-
