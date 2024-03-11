@@ -6,11 +6,11 @@ defaultBranch = main
 [push]
 autoSetupRemote = true
 [pager]
-diff = riff
-show = riff
-log = riff
+	diff = riff
+	show = riff
+	log = riff
 [interactive]
-diffFilter = riff
+	diffFilter = riff --color=on
 [color]
 diff = auto
 status = auto
