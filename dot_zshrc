@@ -75,7 +75,7 @@ export EDITOR="$VISUAL"
 #endregion
 
 # mix
-export PATH="/home/mask/.mix/escripts:$PATH"
+export PATH="$HOME/.mix/escripts:$PATH"
 
 #region program configs
 eval "$(zoxide init zsh)"
